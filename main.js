@@ -15,8 +15,13 @@ textInput.addEventListener(('keyup'), (e)=>{
     console.log(`입력한 글자는 ${inputText} 입니다.`);
     console.log(`글자수는 ${inputText.length}입니다.`);
     
+    // 글자수세기(공백포함)
     lengthWblank.innerHTML = inputText.length;
-    // = inputText.length;
+
+    // 글자수세기(공백미포함)
+    lengthWOblank.innerHTML = inputText.replace(/\s+/g, "").length;
+    
+    // 단어수세기
     wordCounter(inputText);
 })
 
@@ -25,7 +30,7 @@ textInput.addEventListener(('keyup'), (e)=>{
 // 1. 띄어쓰기는 1번을 단어 하나로 취급
 // 2. 마지막 글자는 띄어쓰기 되지 않을 것. -> +1 단어.
 // 3. 줄바꿈을 인식시키자
-// 뭐야 정규식 /\s+/를 쓰면 해결되잖아.. - 만능인가 ??ㄴㅋ
+// 뭐야 정규식 /\s+/를 쓰면 해결되잖아.. - 만능인가 ??
 // console.log(/s+/);
 
 function wordCounter(text) {
@@ -34,7 +39,8 @@ function wordCounter(text) {
 
     // 정규식
     wordCount=text.replace(/[^_0-9a-zA-Zㄱ-ㅎㅏ-ㅣ가-힣]/g, " ").trim().split(/\s+/).length;
-    console.log(text.replace(/[^_0-9a-zA-Zㄱ-ㅎㅏ-ㅣ가-힣]/g, " ").trim().split(/\s+/));
+    // console.log(text.replace(/[^_0-9a-zA-Zㄱ-ㅎㅏ-ㅣ가-힣]/g, " ").trim().split(/\s+/));
+
     // for (let i = 0; i <= text.length; i++) {
     //   if (text.charAt(i) === /s+/) {
     //     wordCount++;
