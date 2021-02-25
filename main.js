@@ -5,24 +5,32 @@ let lengthWOblank = document.querySelector('.lengthWOblank');
 let lengthWblank = document.querySelector('.lengthWblank');
 let words = document.querySelector('.words');
 let readingTime = document.querySelector('.readingTime');
-
+let wordCount = 0;
 
 textInput.addEventListener(('keyup'), (e)=>{
     // console.log("텍스트가 입력되었습니다.");
     // console.log(textInput.value);
+
     let inputText = e.target.value;
     
-    console.log(`입력한 글자는 ${inputText} 입니다.`);
-    console.log(`글자수는 ${inputText.length}입니다.`);
-    
-    // 글자수세기(공백포함)
-    lengthWblank.innerHTML = inputText.length;
+    // 예외처리. 글자가 있었다가 지워지면, 빈 array로 남게되어, 글자/단어가 1로 취급됨.
+    if (inputText == "") {
+        words.innerHTML = 0;
+        lengthWblank.innerHTML =0;
+        lengthWOblank.innerHTML=0;
+    } else {
+        // console.log(`입력한 글자는 ${inputText} 입니다.`);
+        // console.log(`글자수는 ${inputText.length}입니다.`);
+        
+        // 글자수세기(공백포함)
+        lengthWblank.innerHTML = inputText.length;
 
-    // 글자수세기(공백미포함)
-    lengthWOblank.innerHTML = inputText.replace(/\s+/g, "").length;
-    
-    // 단어수세기
-    wordCounter(inputText);
+        // 글자수세기(공백미포함)
+        lengthWOblank.innerHTML = inputText.replace(/\s+/g, "").length;
+        
+        // 단어수세기
+        wordCounter(inputText);
+    }
 })
 
 // text.replace(/[^_0-9a-zA-Z]/g, " ").trim().split(/\s+/).length
@@ -35,10 +43,19 @@ textInput.addEventListener(('keyup'), (e)=>{
 
 function wordCounter(text) {
     
-    let wordCount = 0;
+    let arr = text.trim().split(/\s+/);
+    wordCount=0;
+
+    for (let i=0; i<arr.length; i++) {
+        if (isWord(arr[i])) {
+            wordCount++
+        }
+    };
+
+    // 문제점 : gytks4@naver.com / 010-1234-5678 / Mr. / 2.4 등을 2개 이상의 단어로 취급
 
     // 정규식
-    wordCount=text.replace(/[^_0-9a-zA-Zㄱ-ㅎㅏ-ㅣ가-힣]/g, " ").trim().split(/\s+/).length;
+    // wordCount=text.replace(/[^_0-9a-zA-Zㄱ-ㅎㅏ-ㅣ가-힣]/g, " ").trim().split(/\s+/).length;
     // console.log(text.replace(/[^_0-9a-zA-Zㄱ-ㅎㅏ-ㅣ가-힣]/g, " ").trim().split(/\s+/));
 
     // for (let i = 0; i <= text.length; i++) {
@@ -49,6 +66,21 @@ function wordCounter(text) {
     
     words.innerHTML = wordCount;
   }
+
+// console.log(isWord("b"));
+// const b= "010"
+// console.log(/[0-9a-zA-Zㄱ-ㅎㅏ-ㅣ가-힣]/.test(b));
+
+function isWord(str) {
+    let alphaNumericFound = false;
+    for (let i = 0; i < str.length; i++) {
+        if (/[0-9a-zA-Zㄱ-ㅎㅏ-ㅣ가-힣]/.test(str[i])) {
+            alphaNumericFound = true;
+            return alphaNumericFound
+        }
+    }
+    return alphaNumericFound;
+}
 
 
 //     const korean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
