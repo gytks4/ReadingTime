@@ -7,10 +7,15 @@ let words = document.querySelector('.words');
 let readingTime = document.querySelector('.readingTime');
 let wordCount = 0;
 
+
+const slider = document.querySelector(".slider");
+const cpm = document.querySelector(".cpm")
+
+
 textInput.addEventListener(('keyup'), (e)=>{
     // console.log("텍스트가 입력되었습니다.");
-    // console.log(textInput.value);
-
+    console.log(textInput.value);
+    
     let inputText = e.target.value;
     
     // 예외처리. 글자가 있었다가 지워지면, 빈 array로 남게되어, 글자/단어가 1로 취급됨.
@@ -31,6 +36,8 @@ textInput.addEventListener(('keyup'), (e)=>{
         // 단어수세기
         wordCounter(inputText);
     }
+
+    readingTime.innerHTML = lengthWblank.innerHTML/slider   .value*60;
 })
 
 // text.replace(/[^_0-9a-zA-Z]/g, " ").trim().split(/\s+/).length
@@ -82,14 +89,18 @@ function isWord(str) {
     return alphaNumericFound;
 }
 
-const slider = document.querySelector(".slider");
-const cpm = document.querySelector(".cpm")
+
 cpm.innerHTML = slider.value; // Display the default slider value
 
 // Update the current slider value (each time you drag the slider handle)
 slider.oninput = function() {
-  cpm.innerHTML = this.value;
-  readingTime.innerHTML = lengthWblank.innerHTML/this.value*60;
+    if (textInput.value=="") {
+        readingTime.innerHTML= 0;
+    } else {
+        cpm.innerHTML = this.value;
+        readingTime.innerHTML = lengthWblank.innerHTML/this.value*60;
+    }
+  
 }
 
 

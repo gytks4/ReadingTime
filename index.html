@@ -22,36 +22,59 @@
 </head>
 
 <body>
-    <form>
-        <p><textarea placeholder="Enter any script" class="textInput"></textarea></p>
-        <p> 글자수(공백미포함) : <span class="lengthWOblank">0자</span> </p> 
-        <p> 글자수(공백포함) : <span class="lengthWblank">0자</span> </p> 
-        <p> 단어수 : <span class="words">0자</span> </p> 
-        <p> 리딩타임 : <span class="readingTime">0자</span> </p> 
-    </form>
-
-    <div class="slidecontainer">
-        <p>Default range slider:</p>
-        <input type="range" min="200" max="600" value="400" step="10" class="slider" id="myRange" list="tickmarks">
-        <span class="cpm"></span>
-        
-        
-        <!-- 지원이 안되구먼.. -->
-        <!-- <datalist id="tickmarks">
-            <option>200</option>
-            <option value="10"></option>
-            <option value="20"></option>
-            <option value="30"></option>
-            <option label="PT">320</option>
-            <option label="평상시(면접)">400</option>
-            <option value="60"></option>
-            <option value="70"></option>
-            <option value="80"></option>
-            <option value="90"></option>
-            <option>600</option>
-        </datalist> -->
-        
+    <div class="title">
+        <span>Reading Time Calculator</span>
+        <span>&</span>   
+        <span>Character Counter</span>   
     </div>
+    
+    <section>
+        <textarea placeholder="Enter any script" class="textInput"></textarea>
+        
+        <div class="counter">
+            <p> 글자수(공백미포함)<br/><span class="lengthWOblank">0자</span> </p> 
+            <p> 글자수(공백포함)<br/><span class="lengthWblank">0자</span> </p> 
+            <p> 단어수<br/><span class="words">0자</span> </p> 
+
+        </div>
+        
+            
+        
+
+        <div class="readingTimeContainer">
+            <div class="firstBox">
+                <p> 리딩타임 : <span class="readingTime">0초</span> </p>     
+            
+                <div class="sliderContainer">
+                    <input type="range" min="200" max="600" value="400" step="10" class="slider" id="myRange" list="tickmarks">
+                    <div class="cpm"></div>
+
+                </div>
+
+            </div>
+            
+            
+            
+            
+            <!-- 지원이 안되구먼.. -->
+            <!-- <datalist id="tickmarks">
+                <option>200</option>
+                <option value="10"></option>
+                <option value="20"></option>
+                <option value="30"></option>
+                <option label="PT">320</option>
+                <option label="평상시(면접)">400</option>
+                <option value="60"></option>
+                <option value="70"></option>
+                <option value="80"></option>
+                <option value="90"></option>
+                <option>600</option>
+            </datalist> -->
+            
+        </div>
+
+            
+    </section>
 </body>
 
 </html>

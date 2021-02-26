@@ -81,7 +81,7 @@ textarea {
 .slider {
   -webkit-appearance: none; /* Override default CSS styles */
   appearance: none;
-  width: 40%; /* Full-width */
+  width: 100%; /* Full-width */
   /* height: 25px; Specified height */
   background: #d3d3d3; /* Grey background */
   outline: none; /* Remove outline */
@@ -124,3 +124,33 @@ textarea {
   height: 16px;
   z-index: -1;
 } */
+
+section {
+  text-align: center;
+  padding: 0px 50px;
+}
+
+.counter {
+  display: flex;
+  justify-content: space-around;
+  width: 700px;
+  margin: 20px auto;
+  padding-bottom: 20px;
+  border-bottom: 1px solid gray;
+}
+
+.firstBox {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.firstBox > p {
+  /* flex-basis: 50%; */
+  width: 100%;
+}
+
+.sliderContainer {
+  width: 100%;
+  /* flex-basis: 50%; */
+}
