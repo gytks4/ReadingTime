@@ -82,6 +82,17 @@ function isWord(str) {
     return alphaNumericFound;
 }
 
+const slider = document.querySelector(".slider");
+const cpm = document.querySelector(".cpm")
+cpm.innerHTML = slider.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+  cpm.innerHTML = this.value;
+  readingTime.innerHTML = lengthWblank.innerHTML/this.value*60;
+}
+
+
 
 //     const korean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
 // korean.test(string);
@@ -100,3 +111,5 @@ function isWord(str) {
 // function countWords() {
 //     textInput
 // }
+
+
