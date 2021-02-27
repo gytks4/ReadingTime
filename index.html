@@ -23,31 +23,45 @@
 
 <body>
     <div class="title">
-        <span>Reading Time Calculator</span>
-        <span>&</span>   
-        <span>Character Counter</span>   
+        <div>Reading Time Calculator</div>
+        <div>&</div>   
+        <div>Character Counter</div>   
     </div>
     
     <section>
         <textarea placeholder="Enter any script" class="textInput"></textarea>
         
-        <div class="counter">
+        <table class="counter">
+            <tr>
+                <td>글자수(공백 포함)</td>
+                <td>글자수(공백 미포함)</td>
+                <td>단어수</td>
+
+            </tr>
+            <tr>
+                <td><span class="lengthWblank">0자</span></td>
+                <td><span class="lengthWOblank">0자</span></td>
+                <td><span class="words">0자</span></td>
+            </tr>
+            
+
+        </table>
+        <!-- <div class="counter">
             <p> 글자수(공백미포함)<br/><span class="lengthWOblank">0자</span> </p> 
             <p> 글자수(공백포함)<br/><span class="lengthWblank">0자</span> </p> 
             <p> 단어수<br/><span class="words">0자</span> </p> 
-
-        </div>
-        
             
+
+        </div> -->
         
 
         <div class="readingTimeContainer">
-            <div class="firstBox">
+            <div class="box1">
                 <p> 리딩타임 : <span class="readingTime">0초</span> </p>     
             
                 <div class="sliderContainer">
                     <input type="range" min="200" max="600" value="400" step="10" class="slider" id="myRange" list="tickmarks">
-                    <div class="cpm"></div>
+                    <p class="cpm"></p>
 
                 </div>
 

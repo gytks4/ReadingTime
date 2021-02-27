@@ -9,11 +9,12 @@
   --color-dark-pink: #ff6863;
   --color-dark-grey: #4d4d4d;
   --color-grey: #616161;
-  --color-light-grey: #7c7979;
+  --color-light-grey: #c0c0c0;
   --color-blue: #73aace;
   --color-yellow: #fff7d1;
   --color-orange: #feb546;
   --color-black: #000000;
+  --color-green: #b9ff63;
 
   /* Font size */
   --font-large: 48px;
@@ -43,6 +44,7 @@
 body {
   margin: 0;
   font-family: "Open Sans", sans-serif;
+  text-align: center;
 }
 
 ul {
@@ -64,17 +66,117 @@ a {
   color: var(--color-white);
 }
 
-body {
-  text-align: center;
-}
-textarea {
-  resize: none;
-  width: 700px;
-  height: 500px;
+/* title */
+
+.title {
+  padding: 50px 0;
+  /* border: 1px solid black; */
 }
 
-.slidecontainer {
-  width: 100%; /* Width of the outside container */
+.title div:nth-child(1) {
+  color: var(--color-green);
+  font-size: 50px;
+  font-weight: 800;
+}
+.title div:nth-child(2) {
+  color: black;
+  font-size: 20px;
+  font-weight: 600;
+}
+.title div:nth-child(3) {
+  color: var(--color-dark-grey);
+  font-size: 25px;
+  font-weight: 600;
+}
+
+/* section */
+
+section {
+  text-align: center;
+  padding: 0px 50px;
+  width: 100%;
+  margin: auto;
+  max-width: 1200px;
+}
+
+/* textarea */
+
+textarea {
+  resize: none;
+  width: 100%;
+  height: 500px;
+  border-radius: 8px;
+  border-color: var(--color-light-grey);
+  margin-bottom: 30px;
+}
+
+/* counter */
+.counter {
+  width: 100%;
+  height: 80px;
+  /* border: 1px solid black; */
+
+  /* border가 한줄로 나오도록 한다. */
+  border-collapse: collapse;
+  margin-bottom: 30px;
+  font-size: 20px;
+  color: var(--color-dark-grey);
+}
+
+.counter tr:nth-child(1) {
+  background-color: var(--color-green);
+}
+
+.counter td {
+  width: 33%;
+  border: 1px solid var(--color-light-grey);
+}
+
+/* .counter {
+  display: flex;
+  justify-content: space-around;
+  width: 0%;
+  margin: 20px auto;
+  padding-bottom: 20px;
+  border-bottom: 1px solid gray;
+}
+
+.counter p {
+  color: black;
+  font-size: 20px;
+  border-right: 1px solid gray;
+  padding-right: 50px;
+}
+
+.counter p:nth-child(3) {
+  border-right: transparent;
+} */
+
+.readingTimeContainer {
+  padding-bottom: 30px;
+}
+
+/* box1 - readingTime output box */
+.box1 {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: var(--color-dark-grey);
+}
+
+.box1 p {
+  /* flex-basis: 50%; */
+  width: 100%;
+  font-size: 20px;
+}
+
+.sliderContainer {
+  width: 100%;
+  /* flex-basis: 50%; */
+}
+
+.sliderContainer .cpm {
+  font-size: 15px;
 }
 
 /* The slider itself */
@@ -103,7 +205,7 @@ textarea {
   appearance: none;
   width: 25px; /* Set a specific slider handle width */
   height: 25px; /* Slider handle height */
-  background: #4caf50; /* Green background */
+  background: var(--color-green); /* Green background */
   cursor: pointer; /* Cursor on hover */
   /* height: 25px; */
   border-radius: 50%;
@@ -118,39 +220,9 @@ textarea {
   border-radius: 50%;
 }
 /* 
-.ui-slider-tick {
-  position: absolute;
-  width: 2px;
-  height: 16px;
-  z-index: -1;
-} */
-
-section {
-  text-align: center;
-  padding: 0px 50px;
-}
-
-.counter {
-  display: flex;
-  justify-content: space-around;
-  width: 700px;
-  margin: 20px auto;
-  padding-bottom: 20px;
-  border-bottom: 1px solid gray;
-}
-
-.firstBox {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.firstBox > p {
-  /* flex-basis: 50%; */
-  width: 100%;
-}
-
-.sliderContainer {
-  width: 100%;
-  /* flex-basis: 50%; */
-}
+  .ui-slider-tick {
+    position: absolute;
+    width: 2px;
+    height: 16px;
+    z-index: -1;
+  } */

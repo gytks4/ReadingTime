@@ -7,10 +7,12 @@ let words = document.querySelector('.words');
 let readingTime = document.querySelector('.readingTime');
 let wordCount = 0;
 
+let lengthValue = 0;
 
 const slider = document.querySelector(".slider");
 const cpm = document.querySelector(".cpm")
 
+let readingTimeValue =0;
 
 textInput.addEventListener(('keyup'), (e)=>{
     // console.log("텍스트가 입력되었습니다.");
@@ -28,16 +30,20 @@ textInput.addEventListener(('keyup'), (e)=>{
         // console.log(`글자수는 ${inputText.length}입니다.`);
         
         // 글자수세기(공백포함)
-        lengthWblank.innerHTML = inputText.length;
+        lengthWblank.innerHTML = `${inputText.length} 자 / ${byteCounter(inputText,1)} byte`;
 
         // 글자수세기(공백미포함)
-        lengthWOblank.innerHTML = inputText.replace(/\s+/g, "").length;
+        lengthWOblank.innerHTML = `${inputText.replace(/\s+/g, "").length} 자 / ${byteCounter(inputText.replace(/\s+/g,""),0)} byte`;
         
         // 단어수세기
         wordCounter(inputText);
     }
+    lengthValue= inputText.length;
+    
+     readingTimeValue= (inputText.length/slider.value)*60;
+     console.log(readingTimeValue);
+     readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
 
-    readingTime.innerHTML = lengthWblank.innerHTML/slider   .value*60;
 })
 
 // text.replace(/[^_0-9a-zA-Z]/g, " ").trim().split(/\s+/).length
@@ -70,9 +76,32 @@ function wordCounter(text) {
     //     wordCount++;
     //   }
     // }
-    
-    words.innerHTML = wordCount;
+    words.innerHTML = `${wordCount} 개`;
   }
+
+function byteCounter(text, blank=0) {
+    // blank = 0 -> 공백 미포함  ,  blank = 1 -> 공백 포함
+    let byte = 0;
+    if (blank=0) {
+        text = text.replace(/\s+/g,"");
+    } 
+        
+    for(let i=0; i<text.length;i++) {
+        if (/[ㄱ-ㅎㅏ-ㅣ가-힣]/.test(text[i])) {
+            byte = byte+2
+        } else {
+            byte++
+        }
+    }
+    return byte
+}
+
+// function byteWOblankCounter (text) {
+//     text = text.replace(/\s+/,"");
+
+
+// }
+
 
 // console.log(isWord("b"));
 // const b= "010"
@@ -90,17 +119,20 @@ function isWord(str) {
 }
 
 
-cpm.innerHTML = slider.value; // Display the default slider value
+// cpm.innerHTML = slider.value; // Display the default slider value
+
+cpm.innerHTML = `${slider.value} Character / Minute`
 
 // Update the current slider value (each time you drag the slider handle)
 slider.oninput = function() {
     if (textInput.value=="") {
         readingTime.innerHTML= 0;
     } else {
-        cpm.innerHTML = this.value;
-        readingTime.innerHTML = lengthWblank.innerHTML/this.value*60;
+        readingTimeValue= (textInput.value.length/this.value)*60;
+        readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
     }
-  
+    console.log(readingTimeValue);
+    cpm.innerHTML = `${this.value} Character / Minute`;
 }
 
 
