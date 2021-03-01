@@ -134,7 +134,7 @@ secondsInput.addEventListener(('input'), (e)=>{
         readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
     }
 })
-
+// 음수 안되게
 textInput2.addEventListener(('input'), (e)=>{
     let inputText2 = e.target.value;
     if (secondsInput.value=="") {
@@ -175,6 +175,89 @@ function showSpeed(speed) {
     // 
 }
 
+
+
+var stTime = 0
+var endTime = 0
+var timerStart
+var min
+var sec
+var milisec
+var startBtn = document.getElementById('testStartBtn')
+var stopBtn = document.getElementById('testStopBtn')
+// var recordList = document.getElementById('testRecordList')
+
+startBtn.addEventListener('click', function() {
+    // RECORD
+    // if(this.innerText == 'RECORD' && milisec) {
+    //     console.log(min, sec, milisec)
+    //     var li = document.createElement('li')
+    //     li.style.color = "#fff"
+    //     li.innerText = min + ' : ' + sec + ' : ' + milisec
+        
+    //     if(! recordList.firstChild) {
+    //         recordList.append(li)
+    //     } else {
+    //         recordList.insertBefore(li, recordList.firstChild)
+    //     }
+    //     return false
+    // }
+    // this.innerText = 'RECORD'
+    // if (this.innerText == "RESTART") {
+    //     return;
+    // }
+    if(!stTime) {
+        stTime = Date.now() // 최초 START
+    } else if (this.innerText === "RESTART"){
+        stopBtn.innerText = 'STOP';
+        this.innerText ="START";
+        stTime += (Date.now() - endTime) // RESTART
+    } else if (this.innerText==="START") {
+        return;
+    }
+
+    timerStart = setInterval(function() {
+        var nowTime = new Date(Date.now() - stTime)
+        min = addZero(nowTime.getMinutes())
+        sec = addZero(nowTime.getSeconds())
+        milisec = addZero(Math.floor(nowTime.getMilliseconds() / 10))
+        document.getElementById('postTestMin').innerText = min
+        document.getElementById('postTestSec').innerText = sec
+        document.getElementById('postTestMilisec').innerText = milisec
+    }, 1)
+})
+
+stopBtn.addEventListener('click', function() {
+    if(timerStart) {
+        clearInterval(timerStart) // STOP
+        
+        if(this.innerText == 'STOP') {
+            endTime = Date.now()
+            this.innerText = 'RESET'
+            startBtn.innerText = 'RESTART'
+        } else { // RESET
+            stTime = 0
+            min = 0
+            sec = 0
+            milisec = 0
+            document.getElementById('postTestMin').innerText = '00'
+            document.getElementById('postTestSec').innerText = '00'
+            document.getElementById('postTestMilisec').innerText = '00'
+            startBtn.innerText = 'START'
+            this.innerText = 'STOP'
+            timerStart = null
+        }
+    }
+})
+
+function addZero(num) {
+return (num < 10 ? '0'+num : ''+num)
+}
+
+
+
+
+// 출처: https://im-developer.tistory.com/53 [Code Playground]
 // text.replace(/[^_0-9a-zA-Z]/g, " ").trim().split(/\s+/).length
 
 // 1. 띄어쓰기는 1번을 단어 하나로 취급
@@ -264,6 +347,10 @@ slider.oninput = function() {
     cpmPara.innerHTML = `${this.value} Character / Minute`;
 }
 
+let box1p = document.querySelector('.box1 p:nth-child(1)')
+console.log(slider.style.width);
+console.log(box1p.style.wordSpacing);
+// box1p.style.wordSpacing = slider.style.width;
 
 
 //     const korean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;

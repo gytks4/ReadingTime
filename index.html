@@ -36,7 +36,7 @@
                 <td>글자수(공백 포함)</td>
                 <td>글자수(공백 미포함)</td>
                 <td>단어수</td>
-                <td>리딩타임</td>
+                <td class="tdReadingTime">리딩타임</td>
 
             </tr>
             <tr>
@@ -63,7 +63,8 @@
             <div class="sliderContainer">
                 <input type="radio" name="checking" id="sliderRadio" checked value="slider"> 
                 <label for="slider">Normal<br/>(스크롤하여 속도를 조절해주세요.)</label>
-                <div class="box1">    
+                <div class="box1"> 
+                    <p>Slow            Fast</p>   
                     <input type="range" min="310" max="550" value="430" 
                         step="10" class="slider" id="myRange" list="tickmarks">
                     <p class="cpm"></p>
@@ -81,6 +82,22 @@
                 <input type="radio" name="checking" id="customizeRadio" value="customize"> 
                 <label for="customize">Customize<br/>(일정 시간 동안 읽은 텍스트를 정확하게 넣어주세요.)</label>
                 <div class="box2">
+                    
+                    <div class="stopWatch">
+                        <div>
+                            <p>StopWatch</p>
+                            <span id="postTestMin">00</span><!-- 분 -->
+                            <span>:</span>
+                            <span id="postTestSec">00</span><!--초-->
+                            <span>.</span>
+                            <span id="postTestMilisec">00</span><!--밀리초-->
+                            <!-- 밀리초는 작고, 회색깔로 만들자. -->
+                        </div>
+                        <div>
+                            <button type="button" id="testStartBtn">START</button><!--시작/재시작/기록 버튼-->
+                            <button type="button" id="testStopBtn">STOP</button><!--스톱 버튼-->
+                        </div>
+                    </div>
                     <div class="time">
                         <input type="number" class="minutes" value="0">
                         분
