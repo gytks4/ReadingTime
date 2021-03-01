@@ -36,12 +36,14 @@
                 <td>글자수(공백 포함)</td>
                 <td>글자수(공백 미포함)</td>
                 <td>단어수</td>
+                <td>리딩타임</td>
 
             </tr>
             <tr>
-                <td><span class="lengthWblank">0자</span></td>
-                <td><span class="lengthWOblank">0자</span></td>
-                <td><span class="words">0자</span></td>
+                <td><span class="lengthWblank">0 자 / 0 Byte</span></td>
+                <td><span class="lengthWOblank">0 자 / 0 Byte</span></td>
+                <td><span class="words">0 개</span></td>
+                <td><span class="readingTime">0초</span></td>
             </tr>
             
 
@@ -54,22 +56,45 @@
 
         </div> -->
         
-
+        <p class="subtitle">Reading Time Controller</p>
         <div class="readingTimeContainer">
-            <div class="box1">
-                <p> 리딩타임 : <span class="readingTime">0초</span> </p>     
+             
             
-                <div class="sliderContainer">
-                    <input type="range" min="200" max="600" value="400" step="10" class="slider" id="myRange" list="tickmarks">
+            <div class="sliderContainer">
+                <input type="radio" name="checking" id="sliderRadio" checked value="slider"> 
+                <label for="slider">Normal<br/>(스크롤하여 속도를 조절해주세요.)</label>
+                <div class="box1">    
+                    <input type="range" min="310" max="550" value="430" 
+                        step="10" class="slider" id="myRange" list="tickmarks">
                     <p class="cpm"></p>
-
                 </div>
-
+                <p>
+                    360 cpm : 오디오북 속도 (쉼이 많은 말하기) <br/>
+                    390 cpm : 천천히 설명하는 속도<br/>
+                    430 cpm : 평균 속도 (면접) <br/>
+                    450 cpm : 뉴스 속도 (준비된 말하기) <br/>
+                    470 cpm : 아나운서 (쉼이 적은 말하기)
+                </p>
             </div>
-            
-            
-            
-            
+
+            <div class="customizeContainer">
+                <input type="radio" name="checking" id="customizeRadio" value="customize"> 
+                <label for="customize">Customize<br/>(일정 시간 동안 읽은 텍스트를 정확하게 넣어주세요.)</label>
+                <div class="box2">
+                    <div class="time">
+                        <input type="number" class="minutes" value="0">
+                        분
+                        <input type="number" class="seconds" value="0">
+                        초 동안 "정확하게"
+                    </div>
+                    <div>
+                        <textarea placeholder="Enter any script" class="textInput2"></textarea>
+                        <br/> 만큼 말했습니다.
+                    </div>
+                    <p class="cpm2"></p>
+                </div>
+            </div>
+
             <!-- 지원이 안되구먼.. -->
             <!-- <datalist id="tickmarks">
                 <option>200</option>
@@ -84,7 +109,6 @@
                 <option value="90"></option>
                 <option>600</option>
             </datalist> -->
-            
         </div>
 
             

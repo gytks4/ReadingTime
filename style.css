@@ -66,6 +66,12 @@ a {
   color: var(--color-white);
 }
 
+textarea,
+input {
+  border-radius: 8px;
+  border-color: var(--color-light-grey);
+}
+
 /* title */
 
 .title {
@@ -101,7 +107,7 @@ section {
 
 /* textarea */
 
-textarea {
+.textInput {
   resize: none;
   width: 100%;
   height: 500px;
@@ -128,7 +134,7 @@ textarea {
 }
 
 .counter td {
-  width: 33%;
+  width: 25%;
   border: 1px solid var(--color-light-grey);
 }
 
@@ -152,35 +158,48 @@ textarea {
   border-right: transparent;
 } */
 
+.subtitle {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
 .readingTimeContainer {
   padding-bottom: 30px;
-}
-
-/* box1 - readingTime output box */
-.box1 {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  color: var(--color-dark-grey);
 }
 
-.box1 p {
-  /* flex-basis: 50%; */
-  width: 100%;
-  font-size: 20px;
-}
+/* slider */
 
 .sliderContainer {
-  width: 100%;
-  /* flex-basis: 50%; */
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
+  border-right: 1px solid var(--color-light-grey);
+  flex-basis: 50%;
+}
+.sliderContainer label {
+  /* flex-basis: 10%; */
+  margin-bottom: 50px;
+}
+
+.sliderContainer .slider {
+  /* flex-basis: 90%; */
 }
 
 .sliderContainer .cpm {
   font-size: 15px;
 }
 
+.box1 {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
 /* The slider itself */
 .slider {
+  margin-top: 30px;
+
   -webkit-appearance: none; /* Override default CSS styles */
   appearance: none;
   width: 100%; /* Full-width */
@@ -219,6 +238,34 @@ textarea {
   /* height: 25px; */
   border-radius: 50%;
 }
+
+/* Customize */
+
+.customizeContainer {
+  flex-basis: 50%;
+}
+
+.box2 {
+  margin-top: 30px;
+  /* font-size: 20px; */
+}
+
+.time {
+  margin-bottom: 20px;
+}
+
+.minutes,
+.seconds {
+  width: 50px;
+  height: 20px;
+}
+
+.textInput2 {
+  resize: none;
+  width: 80%;
+  height: 70px;
+}
+
 /* 
   .ui-slider-tick {
     position: absolute;
@@ -226,3 +273,6 @@ textarea {
     height: 16px;
     z-index: -1;
   } */
+
+/* media query  */
+/* 글자를 작게 만들어, 한줄에 나오도록 */

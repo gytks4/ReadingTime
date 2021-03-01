@@ -7,14 +7,31 @@ let words = document.querySelector('.words');
 let readingTime = document.querySelector('.readingTime');
 let wordCount = 0;
 
-let lengthValue = 0;
+// let lengthValue = 0;
 
 const slider = document.querySelector(".slider");
-const cpm = document.querySelector(".cpm")
+const cpmPara = document.querySelector(".cpm")
+const cpmPara2 = document.querySelector(".cpm2")
+// const customizedCPM = 
+
+let textInput2 = document.querySelector('.textInput2');
 
 let readingTimeValue =0;
+let cpm = 0;
+const radioBtn = document.getElementsByName('checking');
+// console.log(radioBtn[0].checked);
+// console.log(radioBtn[1].checked);
 
-textInput.addEventListener(('keyup'), (e)=>{
+
+let seconds = 0;
+
+let minutesInput = document.querySelector('.minutes');
+let secondsInput = document.querySelector('.seconds');
+
+// keyup과 input 
+// keyup은 right-click & paste일 때는 event되지 않는다.
+
+textInput.addEventListener(('input'), (e)=>{
     // console.log("텍스트가 입력되었습니다.");
     console.log(textInput.value);
     
@@ -22,29 +39,126 @@ textInput.addEventListener(('keyup'), (e)=>{
     
     // 예외처리. 글자가 있었다가 지워지면, 빈 array로 남게되어, 글자/단어가 1로 취급됨.
     if (inputText == "") {
-        words.innerHTML = 0;
-        lengthWblank.innerHTML =0;
-        lengthWOblank.innerHTML=0;
+        words.innerHTML = "0 개";
+        lengthWblank.innerHTML ="0 자 / 0 Byte";
+        lengthWOblank.innerHTML= "0 자 / 0 Byte";
     } else {
         // console.log(`입력한 글자는 ${inputText} 입니다.`);
         // console.log(`글자수는 ${inputText.length}입니다.`);
         
         // 글자수세기(공백포함)
-        lengthWblank.innerHTML = `${inputText.length} 자 / ${byteCounter(inputText,1)} byte`;
+        lengthWblank.innerHTML = `${inputText.length} 자 / ${byteCounter(inputText,1)} Byte`;
 
         // 글자수세기(공백미포함)
-        lengthWOblank.innerHTML = `${inputText.replace(/\s+/g, "").length} 자 / ${byteCounter(inputText.replace(/\s+/g,""),0)} byte`;
+        lengthWOblank.innerHTML = `${inputText.replace(/\s+/g, "").length} 자 / ${byteCounter(inputText.replace(/\s+/g,""),0)} Byte`;
         
         // 단어수세기
         wordCounter(inputText);
     }
-    lengthValue= inputText.length;
-    
-     readingTimeValue= (inputText.length/slider.value)*60;
-     console.log(readingTimeValue);
-     readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
+    // lengthValue= inputText.length;
+    if (radioBtn[0].checked) {
+        cpm = slider.value
+        cpmPara2.innerHTML = "";
+    } else {
+        cpm = (textInput2.value.trim().length/seconds)*60
+        if (seconds===0 || textInput2.value=="") {
+            readingTime.innerHTML = "Please, Customize"
+            return;
+        }
+    }
+    cpmPara2.innerHTML = `cpm : ${cpm}`;
+    readingTimeValue= (inputText.trim().length/cpm)*60;
+    readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
 
 })
+
+radioBtn[0].onclick = function () {
+    cpm = slider.value;
+    cpmPara2.innerHTML = "";
+    readingTimeValue= (textInput.value.trim().length/cpm)*60;
+    readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
+}
+
+radioBtn[1].onclick = function () {
+    if (seconds===0 || textInput2.value=="") {
+        readingTime.innerHTML = "Please, customize";
+    } else {
+        cpm = (textInput2.value.trim().length/seconds)*60
+        cpmPara2.innerHTML = `cpm : ${cpm}`;
+        readingTimeValue= (textInput.value.trim().length/cpm)*60;
+        readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
+    }
+}
+
+
+// customize 박스 3개중에 하나를 클릭했는데 customize가 체크 안되어있으면? 
+// customize가 자동으로 클릭되도록 만들자. 
+
+minutesInput.addEventListener(('input'), (e)=>{
+    
+
+    if (secondsInput.value=="") {
+        secondsInput.value=0;
+    }
+    if (minutesInput.value=="") {
+        minutesInput.value=0;
+    }
+    seconds = parseInt(minutesInput.value)*60+parseInt(secondsInput.value);    
+    cpm = (textInput2.value.trim().length/seconds)*60
+    
+    if (seconds===0 || textInput2.value=="") {
+        readingTime.innerHTML = "Please, customize"
+    } else {
+        cpmPara2.innerHTML = `cpm : ${cpm}`;
+        readingTimeValue= (textInput.value.trim().length/cpm)*60;
+        readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
+    }
+})
+
+secondsInput.addEventListener(('input'), (e)=>{
+    if (secondsInput.value=="") {
+        secondsInput.value=0;
+    }
+    if (minutesInput.value=="") {
+        minutesInput.value=0;
+    }
+    seconds = parseInt(minutesInput.value)*60+parseInt(secondsInput.value);    
+    cpm = (textInput2.value.trim().length/seconds)*60
+    
+    if (seconds===0 || textInput2.value=="") {
+        readingTime.innerHTML = "Please, customize"
+    } else {
+        cpmPara2.innerHTML = `cpm : ${cpm}`;
+        readingTimeValue= (textInput.value.trim().length/cpm)*60;
+        readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
+    }
+})
+
+textInput2.addEventListener(('input'), (e)=>{
+    let inputText2 = e.target.value;
+    if (secondsInput.value=="") {
+        secondsInput.value=0;
+    }
+    if (minutesInput.value=="") {
+        minutesInput.value=0;
+    }
+    seconds = parseInt(minutesInput.value)*60+parseInt(secondsInput.value);    
+    cpm = (inputText2.trim().length/seconds)*60
+    // console.log(inputText2.trim().length);
+    
+    
+    if (seconds===0 || textInput2.value=="") {
+        readingTime.innerHTML = "Please, customize"
+
+        
+    } else {
+        cpmPara2.innerHTML = `cpm : ${cpm}`;
+        readingTimeValue= (textInput.value.trim().length/cpm)*60;
+        readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
+    }
+    // 몇글자가 있고, 몇초가 걸렸는지 확인 -> 몇글자/몇초 * 60 = cpm
+})
+
 
 // text.replace(/[^_0-9a-zA-Z]/g, " ").trim().split(/\s+/).length
 
@@ -119,20 +233,20 @@ function isWord(str) {
 }
 
 
-// cpm.innerHTML = slider.value; // Display the default slider value
+// cpmPara.innerHTML = slider.value; // Display the default slider value
 
-cpm.innerHTML = `${slider.value} Character / Minute`
+cpmPara.innerHTML = `${slider.value} Character / Minute (cpm)`
 
 // Update the current slider value (each time you drag the slider handle)
 slider.oninput = function() {
     if (textInput.value=="") {
-        readingTime.innerHTML= 0;
+        readingTime.innerHTML= "0초";
     } else {
         readingTimeValue= (textInput.value.length/this.value)*60;
         readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
     }
     console.log(readingTimeValue);
-    cpm.innerHTML = `${this.value} Character / Minute`;
+    cpmPara.innerHTML = `${this.value} Character / Minute`;
 }
 
 
