@@ -12,6 +12,7 @@ let wordCount = 0;
 const slider = document.querySelector(".slider");
 const cpmPara = document.querySelector(".cpm")
 const cpmPara2 = document.querySelector(".cpm2")
+const speedPara = document.querySelector(".speed");
 // const customizedCPM = 
 
 let textInput2 = document.querySelector('.textInput2');
@@ -53,7 +54,7 @@ textInput.addEventListener(('input'), (e)=>{
         lengthWOblank.innerHTML = `${inputText.replace(/\s+/g, "").length} 자 / ${byteCounter(inputText.replace(/\s+/g,""),0)} Byte`;
         
         // 단어수세기
-        wordCounter(inputText);
+        countWords(inputText);
     }
     // lengthValue= inputText.length;
     if (radioBtn[0].checked) {
@@ -159,6 +160,20 @@ textInput2.addEventListener(('input'), (e)=>{
     // 몇글자가 있고, 몇초가 걸렸는지 확인 -> 몇글자/몇초 * 60 = cpm
 })
 
+function showSpeed(speed) {
+    if (speed > 480) {
+        speedPara.innerHTML = ""
+    } else if (speed> 460) {
+        speedPara.innerHTML = ""
+    } else if (speed > 410) {
+        speedPara.innerHTML = ""
+    } else if (speed > 390) {
+        speedPara.innerHTML = ""
+    } else {
+        speedPara.innerHTML = ""
+    }   
+    // 
+}
 
 // text.replace(/[^_0-9a-zA-Z]/g, " ").trim().split(/\s+/).length
 
@@ -168,7 +183,7 @@ textInput2.addEventListener(('input'), (e)=>{
 // 뭐야 정규식 /\s+/를 쓰면 해결되잖아.. - 만능인가 ??
 // console.log(/s+/);
 
-function wordCounter(text) {
+function countWords(text) {
     
     let arr = text.trim().split(/\s+/);
     wordCount=0;
