@@ -73,7 +73,13 @@ textInput.addEventListener(('input'), (e)=>{
 
 })
 
+let sliderContainer = document.querySelector('.sliderContainer')
+let customizeContainer = document.querySelector('.customizeContainer')
+
 radioBtn[0].onclick = function () {
+    sliderContainer.style.backgroundColor = "var(--color-second)";
+    customizeContainer.style.backgroundColor = "transparent";
+
     cpm = slider.value;
     cpmPara2.innerHTML = "";
     readingTimeValue= (textInput.value.trim().length/cpm)*60;
@@ -81,6 +87,9 @@ radioBtn[0].onclick = function () {
 }
 
 radioBtn[1].onclick = function () {
+    sliderContainer.style.backgroundColor = "transparent";
+    customizeContainer.style.backgroundColor = "var(--color-second)";
+
     if (seconds===0 || textInput2.value=="") {
         readingTime.innerHTML = "Please, customize";
     } else {
@@ -96,11 +105,10 @@ radioBtn[1].onclick = function () {
 // customize가 자동으로 클릭되도록 만들자. 
 
 minutesInput.addEventListener(('input'), (e)=>{
-    
 
     if (secondsInput.value=="") {
         secondsInput.value=0;
-    }
+    } 
     if (minutesInput.value=="") {
         minutesInput.value=0;
     }
@@ -134,6 +142,10 @@ secondsInput.addEventListener(('input'), (e)=>{
         readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
     }
 })
+
+// Normal과 customized를 클릭해도 버튼이 클릭되게끔
+
+
 // 음수 안되게
 textInput2.addEventListener(('input'), (e)=>{
     let inputText2 = e.target.value;
