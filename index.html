@@ -28,7 +28,7 @@
         <div>Character Counter</div>   
     </div>
     
-    <section>
+    <section id="main">
         <textarea placeholder="Enter any script" class="textInput"></textarea>
         
         <table class="counter">
@@ -58,7 +58,6 @@
         
         <p class="subtitle">Reading Time Controller</p>
         <div class="readingTimeContainer">
-             
             
             <div class="sliderContainer">
                 <div class="radioBox">
@@ -90,22 +89,6 @@
                 
                 <!-- <br/>(일정 시간 동안 읽은 텍스트를 정확하게 넣어주세요.) -->
                 <div class="box2">
-                    
-                    <div class="stopWatch">
-                        <div>
-                            <p>StopWatch</p>
-                            <span id="postTestMin">00</span><!-- 분 -->
-                            <span>:</span>
-                            <span id="postTestSec">00</span><!--초-->
-                            <span>.</span>
-                            <span id="postTestMilisec">00</span><!--밀리초-->
-                            <!-- 밀리초는 작고, 회색깔로 만들자. -->
-                        </div>
-                        <div>
-                            <button type="button" id="testStartBtn">START</button><!--시작/재시작/기록 버튼-->
-                            <button type="button" id="testStopBtn">STOP</button><!--스톱 버튼-->
-                        </div>
-                    </div>
                     <div class="time">
                         <input type="number" class="minutes" value="0" min="0">
                         분
@@ -113,11 +96,29 @@
                         초 동안 "정확하게"
                     </div>
                     <div>
-                        <textarea placeholder="Enter any script" class="textInput2"></textarea>
-                        <br/> 만큼 말했습니다.
+                        <textarea placeholder="Measure it, at least 20 seconds" class="textInput2"></textarea>
+                        
                     </div>
-                    <p class="cpm2"></p>
-                    <p class="speed"></p>
+                    <p>만큼 말했습니다.</p>
+                    <div class="stopWatch">
+                        <div>
+                            <span id="postTestMin">00</span><!-- 분 -->
+                            <span>:</span>
+                            <span id="postTestSec">00</span><!--초-->
+                            <span>.</span>
+                            <span id="postTestMilisec">00</span><!--밀리초-->
+                            <!-- 밀리초는 작고, 회색깔로 만들자. -->
+                            <div>
+                                <button type="button" id="testStartBtn">START</button><!--시작/재시작/기록 버튼-->
+                                <button type="button" id="testStopBtn">STOP</button><!--스톱 버튼-->
+                            </div>
+                        </div>
+                        <div>
+                            <p class="cpm2"></p>
+                            <p class="speed"></p>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
 
@@ -136,8 +137,29 @@
                 <option>600</option>
             </datalist> -->
         </div>
-
-            
+        
+    </section>
+    
+    <section id="contact">
+        <p class="subtitle">Contact</p>
+        <p class="description">초보 개발자입니다.<br/>오류가 있다면 아래 SNS로 연락주시면 감사하겠습니다.</p>
+        <p class="email">euijinkk97@gmail.com</p>
+        <div class="icons">
+            <!-- <i class="fab fa-github"></i>
+            <i class="fab fa-instagram"></i> -->
+            <a href="https://github.com/gytks4" target="_blank">
+                <img src="imgs/github2.png" alt="">
+            </a>
+            <a href="https://www.instagram.com/sisyphe_philo/" target="_blank">
+                <img src="imgs/instagram3.png" alt="">
+            </a>
+            <a href="https://blog.naver.com/gytks4" target="_blank">
+                <img src="imgs/naverBlog.png" alt="">
+            </a>
+        </div>
+        <!-- <p class="copyright">ⓒ Copyright <strong>EuiJin Kim</strong> 2021</p> -->
+        <p class="copyright"> © 2021 readingtime.io. All rights reserved | Developed by <strong>EuiJin Kim</strong></p>
+        
     </section>
 </body>
 

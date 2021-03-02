@@ -66,8 +66,9 @@ textInput.addEventListener(('input'), (e)=>{
             readingTime.innerHTML = "Please, Customize"
             return;
         }
+        cpmPara2.innerHTML = `cpm : ${cpm}`;
     }
-    cpmPara2.innerHTML = `cpm : ${cpm}`;
+    
     readingTimeValue= (inputText.trim().length/cpm)*60;
     readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
 
@@ -105,71 +106,78 @@ radioBtn[1].onclick = function () {
 // customize가 자동으로 클릭되도록 만들자. 
 
 minutesInput.addEventListener(('input'), (e)=>{
-
-    if (secondsInput.value=="") {
-        secondsInput.value=0;
-    } 
-    if (minutesInput.value=="") {
-        minutesInput.value=0;
+    if (radioBtn[1].checked){
+        if (secondsInput.value=="") {
+            secondsInput.value=0;
+        } 
+        if (minutesInput.value=="") {
+            minutesInput.value=0;
+        }
+        seconds = parseInt(minutesInput.value)*60+parseInt(secondsInput.value);    
+        cpm = (textInput2.value.trim().length/seconds)*60
+        
+        if (seconds===0 || textInput2.value=="") {
+            readingTime.innerHTML = "Please, customize"
+        } else {
+            cpmPara2.innerHTML = `cpm : ${cpm}`;
+            readingTimeValue= (textInput.value.trim().length/cpm)*60;
+            readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
+        }
     }
-    seconds = parseInt(minutesInput.value)*60+parseInt(secondsInput.value);    
-    cpm = (textInput2.value.trim().length/seconds)*60
     
-    if (seconds===0 || textInput2.value=="") {
-        readingTime.innerHTML = "Please, customize"
-    } else {
-        cpmPara2.innerHTML = `cpm : ${cpm}`;
-        readingTimeValue= (textInput.value.trim().length/cpm)*60;
-        readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
-    }
 })
 
 secondsInput.addEventListener(('input'), (e)=>{
-    if (secondsInput.value=="") {
-        secondsInput.value=0;
+    if (radioBtn[1].checked){
+        if (secondsInput.value=="") {
+            secondsInput.value=0;
+        }
+        if (minutesInput.value=="") {
+            minutesInput.value=0;
+        }
+        seconds = parseInt(minutesInput.value)*60+parseInt(secondsInput.value);    
+        cpm = (textInput2.value.trim().length/seconds)*60
+        
+        if (seconds===0 || textInput2.value=="") {
+            readingTime.innerHTML = "Please, customize"
+        } else {
+            cpmPara2.innerHTML = `cpm : ${cpm}`;
+            readingTimeValue= (textInput.value.trim().length/cpm)*60;
+            readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
+        }
     }
-    if (minutesInput.value=="") {
-        minutesInput.value=0;
-    }
-    seconds = parseInt(minutesInput.value)*60+parseInt(secondsInput.value);    
-    cpm = (textInput2.value.trim().length/seconds)*60
     
-    if (seconds===0 || textInput2.value=="") {
-        readingTime.innerHTML = "Please, customize"
-    } else {
-        cpmPara2.innerHTML = `cpm : ${cpm}`;
-        readingTimeValue= (textInput.value.trim().length/cpm)*60;
-        readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
-    }
 })
-
-// Normal과 customized를 클릭해도 버튼이 클릭되게끔
 
 
 // 음수 안되게
 textInput2.addEventListener(('input'), (e)=>{
-    let inputText2 = e.target.value;
-    if (secondsInput.value=="") {
-        secondsInput.value=0;
-    }
-    if (minutesInput.value=="") {
-        minutesInput.value=0;
-    }
-    seconds = parseInt(minutesInput.value)*60+parseInt(secondsInput.value);    
-    cpm = (inputText2.trim().length/seconds)*60
-    // console.log(inputText2.trim().length);
-    
-    
-    if (seconds===0 || textInput2.value=="") {
-        readingTime.innerHTML = "Please, customize"
+    if (radioBtn[1].checked){
 
+        let inputText2 = e.target.value;
+        if (secondsInput.value=="") {
+            secondsInput.value=0;
+        }
+        if (minutesInput.value=="") {
+            minutesInput.value=0;
+        }
+        seconds = parseInt(minutesInput.value)*60+parseInt(secondsInput.value);    
+        cpm = (inputText2.trim().length/seconds)*60
+        // console.log(inputText2.trim().length);
         
-    } else {
-        cpmPara2.innerHTML = `cpm : ${cpm}`;
-        readingTimeValue= (textInput.value.trim().length/cpm)*60;
-        readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
+        
+        if (seconds===0 || textInput2.value=="") {
+            readingTime.innerHTML = "Please, customize"
+
+            
+        } else {
+            cpmPara2.innerHTML = `cpm : ${cpm}`;
+            readingTimeValue= (textInput.value.trim().length/cpm)*60;
+            readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
+        }
+        // 몇글자가 있고, 몇초가 걸렸는지 확인 -> 몇글자/몇초 * 60 = cpm
     }
-    // 몇글자가 있고, 몇초가 걸렸는지 확인 -> 몇글자/몇초 * 60 = cpm
+    
 })
 
 function showSpeed(speed) {
@@ -188,7 +196,7 @@ function showSpeed(speed) {
 }
 
 
-
+// stop watch
 var stTime = 0
 var endTime = 0
 var timerStart
@@ -349,14 +357,16 @@ cpmPara.innerHTML = `${slider.value} Character / Minute (cpm)`
 
 // Update the current slider value (each time you drag the slider handle)
 slider.oninput = function() {
-    if (textInput.value=="") {
-        readingTime.innerHTML= "0초";
-    } else {
-        readingTimeValue= (textInput.value.length/this.value)*60;
-        readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
+    if (radioBtn[0].checked) {
+        if (textInput.value=="") {
+            readingTime.innerHTML= "0초";
+        } else {
+            readingTimeValue= (textInput.value.length/this.value)*60;
+            readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
+        }
+        console.log(readingTimeValue);
+        cpmPara.innerHTML = `${this.value} Character / Minute`;
     }
-    console.log(readingTimeValue);
-    cpmPara.innerHTML = `${this.value} Character / Minute`;
 }
 
 let box1p = document.querySelector('.box1 p:nth-child(1)')
