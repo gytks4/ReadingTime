@@ -61,7 +61,7 @@ textInput.addEventListener(('input'), (e)=>{
         cpm = slider.value
         // cpmPara2.innerHTML = "";
     } else {
-        cpm = Math.round((textInput2.value.trim().length/seconds)*60)
+        cpm = Math.round((textInput2.value.trim().replace(/\s+/g, " ").length/seconds)*60)
         if (seconds===0 || textInput2.value=="") {
             readingTime.innerHTML = "Please, Customize"
             return;
@@ -69,7 +69,7 @@ textInput.addEventListener(('input'), (e)=>{
         cpmPara2.innerHTML = `cpm : ${cpm}`;
     }
     
-    readingTimeValue= (inputText.trim().length/cpm)*60;
+    readingTimeValue= (inputText.trim().replace(/\s+/g, " ").length/cpm)*60;
     readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
 
 })
@@ -83,7 +83,7 @@ radioBtn[0].onclick = function () {
 
     cpm = slider.value;
     // cpmPara2.innerHTML = "";
-    readingTimeValue= (textInput.value.trim().length/cpm)*60;
+    readingTimeValue= (textInput.value.trim().replace(/\s+/g, " ").length/cpm)*60;
     readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
 }
 
@@ -96,8 +96,23 @@ radioBtn[1].onclick = function () {
     } else {
         cpm = Math.round((textInput2.value.trim().length/seconds)*60)
         cpmPara2.innerHTML = `cpm : ${cpm}`;
-        readingTimeValue= (textInput.value.trim().length/cpm)*60;
+        readingTimeValue= (textInput.value.trim().replace(/\s+/g, " ").length/cpm)*60;
         readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
+    }
+}
+
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+    if (radioBtn[0].checked) {
+        if (textInput.value=="") {
+            readingTime.innerHTML= "0초";
+        } else {
+            readingTimeValue= (textInput.value.trim().replace(/\s+/g, " ").length/this.value)*60;
+            readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
+        }
+        console.log(readingTimeValue);
+        cpmPara.innerHTML = `${this.value} Character / Minute`;
     }
 }
 
@@ -120,7 +135,7 @@ minutesInput.addEventListener(('input'), (e)=>{
             readingTime.innerHTML = "Please, customize"
         } else {
             cpmPara2.innerHTML = `cpm : ${cpm}`;
-            readingTimeValue= (textInput.value.trim().length/cpm)*60;
+            readingTimeValue= (textInput.value.trim().replace(/\s+/g, " ").length/cpm)*60;
             readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
         }
     }
@@ -142,7 +157,7 @@ secondsInput.addEventListener(('input'), (e)=>{
             readingTime.innerHTML = "Please, customize"
         } else {
             cpmPara2.innerHTML = `cpm : ${cpm}`;
-            readingTimeValue= (textInput.value.trim().length/cpm)*60;
+            readingTimeValue= (textInput.value.trim().replace(/\s+/g, " ").length/cpm)*60;
             readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
         }
     }
@@ -162,7 +177,7 @@ textInput2.addEventListener(('input'), (e)=>{
             minutesInput.value=0;
         }
         seconds = parseInt(minutesInput.value)*60+parseInt(secondsInput.value);    
-        cpm = Math.round((inputText2.trim().length/seconds)*60)
+        cpm = Math.round((inputText2.trim().replace(/\s+/g, " ").length/seconds)*60)
         // console.log(inputText2.trim().length);
         
         
@@ -172,7 +187,7 @@ textInput2.addEventListener(('input'), (e)=>{
             
         } else {
             cpmPara2.innerHTML = `cpm : ${cpm}`;
-            readingTimeValue= (textInput.value.trim().length/cpm)*60;
+            readingTimeValue= (textInput.value.trim().replace(/\s+/g, " ").length/cpm)*60;
             readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
         }
         // 몇글자가 있고, 몇초가 걸렸는지 확인 -> 몇글자/몇초 * 60 = cpm
@@ -353,25 +368,12 @@ function isWord(str) {
 
 // cpmPara.innerHTML = slider.value; // Display the default slider value
 
-cpmPara.innerHTML = `${slider.value} Character / Minute (cpm)`
 
-// Update the current slider value (each time you drag the slider handle)
-slider.oninput = function() {
-    if (radioBtn[0].checked) {
-        if (textInput.value=="") {
-            readingTime.innerHTML= "0초";
-        } else {
-            readingTimeValue= (textInput.value.length/this.value)*60;
-            readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
-        }
-        console.log(readingTimeValue);
-        cpmPara.innerHTML = `${this.value} Character / Minute`;
-    }
-}
 
-let box1p = document.querySelector('.box1 p:nth-child(1)')
-console.log(slider.style.width);
-console.log(box1p.style.wordSpacing);
+
+// let box1p = document.querySelector('.box1 p:nth-child(1)')
+// console.log(slider.style.width);
+// console.log(box1p.style.wordSpacing);
 // box1p.style.wordSpacing = slider.style.width;
 
 

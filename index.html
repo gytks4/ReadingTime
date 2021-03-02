@@ -5,16 +5,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Reading Time Calculator, 발표시간 계산기/글자수 세기</title>
 
-    <meta name="description" content="Portfolio for world-renowned software engineer Euijin">
-    <meta name="author" content="Euijin">
+    <!-- 검색엔진 -->
+    <meta name="keywords" content="word Counter, Reading Time Calculator, Character Counter">
+    <meta name="description" content="텍스트를 넣으면 '발표시간', 글자수, 단어수를 계산합니다. (리딩타임/1분자기소개/5분말하기/PT시간)">
+    <meta name="author" content="김의진">
+    <!-- UTF 8 로 설정 -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- 구글에서 색인화, 링크연결하도록 -->
+    <meta name="robots" content="index, follow">
     <!-- fontawesome 주소를 달아준다 -->
     <script src="https://kit.fontawesome.com/76cfe4f16b.js" crossorigin="anonymous"></script>
     <!-- fontgoogle 주소를 달아준다 + CSS font-family: "Open Sans", sans-serif;-->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- 사이트의 icon -->
-    <link rel="icon" type="image/png" href="imgs/sisyphe_philo.png">
+    <link rel="icon" type="image/png" href="imgs/readingTime_logo2.png">
     <!-- css link 연결 -->
     <link rel="stylesheet" href="style.css">
     <!-- js script 연결 -->
@@ -29,7 +35,7 @@
     </div>
     
     <section id="main">
-        <textarea placeholder="텍스트를 입력하면 글자수, 단어수, 읽는 시간을 측정합니다." class="textInput"></textarea>
+        <textarea placeholder="텍스트를 입력하면 글자수, 단어수, 리딩타임을 측정합니다. 한국어 기준이지만 타언어가 조금 포함되어도 무방합니다." class="textInput"></textarea>
         
         <table class="counter">
             <tr>
@@ -57,7 +63,7 @@
         </div> -->
         
         <p class="subtitle">Reading Time Controller</p>
-        <p class="paragraph">보다 정확하게 측정하고 싶다면, Customize를 이용하세요.</p>
+        <!-- <p class="paragraph">보다 정확하게 측정하고 싶다면, Customize를 이용하세요.</p> -->
         <div class="readingTimeContainer">
             
             <div class="sliderContainer">
@@ -65,7 +71,7 @@
                     <input type="radio" name="checking" id="sliderRadio" checked value="slider"> 
                     <label for="sliderRadio">Normal</label>
                 </div>
-                <p class="paragraph">좌우 스크롤하여, 본인의 속도에 따른 리딩타임을 출력해보세요.</p>
+                <p class="paragraph">좌우 스크롤하여, 본인의 속도에 맞는 리딩타임을 출력해보세요.</p>
                 
                 <!-- <br/>(스크롤하여 속도를 조절해주세요.) -->
                 <div class="box1"> 
@@ -75,11 +81,11 @@
                     <p class="cpm"></p>
                 </div>
                 <p class="cpmText">
-                    360 cpm : 오디오북 속도 (쉼이 많은 말하기) <br/>
-                    390 cpm : 천천히 설명하는 속도<br/>
-                    430 cpm : 평균 속도 (면접) <br/>
-                    450 cpm : 뉴스 속도 (준비된 말하기) <br/>
-                    470 cpm : 아나운서 (쉼이 적은 말하기)
+                    360 cpm : 오디오북 속도<br/>
+                    390 cpm : 문장간 쉼이 길고, 천천히 설명하는 속도<br/>
+                    410 cpm : 천천히 설명하는 속도<br/>
+                    430~450 cpm : 보통 속도<br/>
+                    470 cpm : 문장간 쉼이 적으며, 빠른 속도
                 </p>
             </div>
 
@@ -88,7 +94,7 @@
                     <input type="radio" name="checking" id="customizeRadio" value="customize"> 
                     <label for="customizeRadio">Customize</label>
                 </div>
-                <p class="paragraph">최소 20초 동안 읽은 텍스트를 입력해주세요.<br/>(시간이 길수록 정확합니다.)</p>
+                <p class="paragraph">본인의 속도대로 최소 20초 동안 읽은 텍스트를 입력해주세요.<br/>(시간이 길수록 정확합니다.)</p>
                 
                 <!-- <br/>(일정 시간 동안 읽은 텍스트를 정확하게 넣어주세요.) -->
                 <div class="box2">
@@ -96,7 +102,7 @@
                         <input type="number" class="minutes" value="0" min="0">
                         분
                         <input type="number" class="seconds" value="0" min="0" max="60">
-                        초 동안 "정확하게"
+                        초 동안 "정확히"
                     </div>
                     <div>
                         <textarea placeholder="Measure it, at least 20 seconds" class="textInput2"></textarea>
@@ -146,7 +152,7 @@
     
     <section id="contact">
         <p class="subtitle">Contact</p>
-        <p class="description">오류가 있다면 아래 SNS로 연락주시면 감사하겠습니다.</p>
+        <p class="description">불편한 점이 있다면 아래 SNS로 연락주시면 감사하겠습니다.</p>
         <p class="email">euijinkk97@gmail.com</p>
         <div class="icons">
             <!-- <i class="fab fa-github"></i>
@@ -162,7 +168,7 @@
             </a>
         </div>
         <!-- <p class="copyright">ⓒ Copyright <strong>EuiJin Kim</strong> 2021</p> -->
-        <p class="copyright"> © 2021 readingtime.io. All rights reserved | Developed by <strong>EuiJin Kim</strong></p>
+        <p class="copyright"> © 2021 readingtime.io. All rights reserved | Developed by 김의진</p>
         
     </section>
 </body>
