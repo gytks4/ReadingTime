@@ -59,9 +59,9 @@ textInput.addEventListener(('input'), (e)=>{
     // lengthValue= inputText.length;
     if (radioBtn[0].checked) {
         cpm = slider.value
-        cpmPara2.innerHTML = "";
+        // cpmPara2.innerHTML = "";
     } else {
-        cpm = (textInput2.value.trim().length/seconds)*60
+        cpm = Math.round((textInput2.value.trim().length/seconds)*60)
         if (seconds===0 || textInput2.value=="") {
             readingTime.innerHTML = "Please, Customize"
             return;
@@ -82,7 +82,7 @@ radioBtn[0].onclick = function () {
     customizeContainer.style.backgroundColor = "transparent";
 
     cpm = slider.value;
-    cpmPara2.innerHTML = "";
+    // cpmPara2.innerHTML = "";
     readingTimeValue= (textInput.value.trim().length/cpm)*60;
     readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
 }
@@ -94,7 +94,7 @@ radioBtn[1].onclick = function () {
     if (seconds===0 || textInput2.value=="") {
         readingTime.innerHTML = "Please, customize";
     } else {
-        cpm = (textInput2.value.trim().length/seconds)*60
+        cpm = Math.round((textInput2.value.trim().length/seconds)*60)
         cpmPara2.innerHTML = `cpm : ${cpm}`;
         readingTimeValue= (textInput.value.trim().length/cpm)*60;
         readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
@@ -114,7 +114,7 @@ minutesInput.addEventListener(('input'), (e)=>{
             minutesInput.value=0;
         }
         seconds = parseInt(minutesInput.value)*60+parseInt(secondsInput.value);    
-        cpm = (textInput2.value.trim().length/seconds)*60
+        cpm = Math.round((textInput2.value.trim().length/seconds)*60)
         
         if (seconds===0 || textInput2.value=="") {
             readingTime.innerHTML = "Please, customize"
@@ -136,7 +136,7 @@ secondsInput.addEventListener(('input'), (e)=>{
             minutesInput.value=0;
         }
         seconds = parseInt(minutesInput.value)*60+parseInt(secondsInput.value);    
-        cpm = (textInput2.value.trim().length/seconds)*60
+        cpm = Math.round((textInput2.value.trim().length/seconds)*60)
         
         if (seconds===0 || textInput2.value=="") {
             readingTime.innerHTML = "Please, customize"
@@ -162,7 +162,7 @@ textInput2.addEventListener(('input'), (e)=>{
             minutesInput.value=0;
         }
         seconds = parseInt(minutesInput.value)*60+parseInt(secondsInput.value);    
-        cpm = (inputText2.trim().length/seconds)*60
+        cpm = Math.round((inputText2.trim().length/seconds)*60)
         // console.log(inputText2.trim().length);
         
         
