@@ -29,9 +29,8 @@
 
 <body>
     <div class="title">
-        <div>Reading Time Calculator</div>
-        <div>&</div>   
-        <div>Character Counter</div>   
+        <div>발표시간 계산기</div>
+
     </div>
     
     <section id="main">
@@ -62,7 +61,7 @@
 
         </div> -->
         
-        <p class="subtitle">Reading Time Controller</p>
+        <p class="subtitle">리딩타임 세부조정</p>
         <!-- <p class="paragraph">보다 정확하게 측정하고 싶다면, Customize를 이용하세요.</p> -->
         <div class="readingTimeContainer">
             
@@ -71,30 +70,32 @@
                     <input type="radio" name="checking" id="sliderRadio" checked value="slider"> 
                     <label for="sliderRadio">Normal</label>
                 </div>
-                <p class="paragraph">좌우 스크롤하여, 본인의 속도에 맞는 리딩타임을 출력해보세요.</p>
+                <p class="paragraph">좌우 스크롤하여, 자신의 속도에 맞는 리딩타임을 출력합니다.</p>
                 
                 <!-- <br/>(스크롤하여 속도를 조절해주세요.) -->
                 <div class="box1"> 
                     <p>Slow            Fast</p>   
                     <input type="range" min="310" max="550" value="430" 
                         step="10" class="slider" id="myRange" list="tickmarks">
-                    <p class="cpm">430 Character / Minute</p>
+                    <p class="cpm">430 CPM (Character/Minute)</p>
                 </div>
                 <p class="cpmText">
-                    360 cpm : 오디오북 속도<br/>
-                    390 cpm : 문장간 쉼이 길고, 천천히 설명하는 속도<br/>
-                    410 cpm : 천천히 설명하는 속도<br/>
-                    430~450 cpm : 보통 속도<br/>
-                    470 cpm : 문장간 쉼이 적으며, 빠른 속도
+                    360 CPM : 오디오북 속도<br/>
+                    390 CPM : 문장간 쉼이 길고, 천천히 설명하는 속도<br/>
+                    410 CPM : 천천히 설명하는 속도<br/>
+                    430~450 CPM : 보통 속도<br/>
+                    470 CPM : 문장간 쉼이 적으며, 빠른 속도
                 </p>
             </div>
 
             <div class="customizeContainer">
                 <div class="radioBox">
                     <input type="radio" name="checking" id="customizeRadio" value="customize"> 
-                    <label for="customizeRadio">Customize</label>
+                    <label for="customizeRadio">CPM 자가측정</label>
                 </div>
-                <p class="paragraph">본인의 속도대로 최소 20초 동안 읽은 텍스트를 입력해주세요.<br/>(시간이 길수록 정확합니다.)</p>
+                <p class="paragraph"><strong>20초</strong> 동안 얼마의 텍스트를 읽었는지 입력하여, 전체 텍스트의 리딩타임을 출력합니다.
+                    <br/>(영어가 포함되면 부정확할 수 있으니, 되도록 한국어로 바꾸어주세요.)
+                </p>
                 
                 <!-- <br/>(일정 시간 동안 읽은 텍스트를 정확하게 넣어주세요.) -->
                 <div class="box2">
@@ -168,7 +169,7 @@
             </a>
         </div>
         <!-- <p class="copyright">ⓒ Copyright <strong>EuiJin Kim</strong> 2021</p> -->
-        <p class="copyright"> © 2021 readingtime.io. All rights reserved | Developed by 김의진</p>
+        <p class="copyright"> © 2021 https://gytks4.github.io/readingtime/. All rights reserved | Developed by 김의진</p>
         
     </section>
 </body>

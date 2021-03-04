@@ -80,7 +80,7 @@ let customizeContainer = document.querySelector('.customizeContainer')
 radioBtn[0].onclick = function () {
     sliderContainer.style.backgroundColor = "var(--color-second)";
     customizeContainer.style.backgroundColor = "transparent";
-
+    
     cpm = slider.value;
     // cpmPara2.innerHTML = "";
     readingTimeValue= (textInput.value.trim().replace(/\s+/g, " ").length/cpm)*60;
@@ -90,7 +90,7 @@ radioBtn[0].onclick = function () {
 radioBtn[1].onclick = function () {
     sliderContainer.style.backgroundColor = "transparent";
     customizeContainer.style.backgroundColor = "var(--color-second)";
-
+    seconds = parseInt(minutesInput.value)*60+parseInt(secondsInput.value);    
     if (seconds===0 || textInput2.value=="") {
         readingTime.innerHTML = "Please, customize";
     } else {
@@ -112,7 +112,7 @@ slider.oninput = function() {
             readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
         }
         console.log(readingTimeValue);
-        cpmPara.innerHTML = `${this.value} Character / Minute`;
+        cpmPara.innerHTML = `${this.value} CPM (Character/Minute)`;
     }
 }
 
