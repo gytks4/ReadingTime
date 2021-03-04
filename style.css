@@ -251,6 +251,10 @@ label {
   font-size: 15px;
 }
 
+.sliderContainer p:nth-last-child(1) {
+  margin-bottom: 20px;
+}
+
 .box1 {
   margin-top: 20px;
   display: flex;
