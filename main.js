@@ -24,18 +24,15 @@ const radioBtn = document.getElementsByName('checking');
 // console.log(radioBtn[1].checked);
 
 
-let seconds = 0;
+let seconds = 20;
 
-let minutesInput = document.querySelector('.minutes');
-let secondsInput = document.querySelector('.seconds');
+// let minutesInput = document.querySelector('.minutes');
+// let secondsInput = document.querySelector('.seconds');
 
 // keyup과 input 
 // keyup은 right-click & paste일 때는 event되지 않는다.
 
 textInput.addEventListener(('input'), (e)=>{
-    // console.log("텍스트가 입력되었습니다.");
-    console.log(textInput.value);
-    
     let inputText = e.target.value;
     
     // 예외처리. 글자가 있었다가 지워지면, 빈 array로 남게되어, 글자/단어가 1로 취급됨.
@@ -66,7 +63,7 @@ textInput.addEventListener(('input'), (e)=>{
             readingTime.innerHTML = "Please, Customize"
             return;
         }
-        cpmPara2.innerHTML = `cpm : ${cpm}`;
+        cpmPara2.innerHTML = `CPM : ${cpm}`;
     }
     
     readingTimeValue= (inputText.trim().replace(/\s+/g, " ").length/cpm)*60;
@@ -90,12 +87,12 @@ radioBtn[0].onclick = function () {
 radioBtn[1].onclick = function () {
     sliderContainer.style.backgroundColor = "transparent";
     customizeContainer.style.backgroundColor = "var(--color-second)";
-    seconds = parseInt(minutesInput.value)*60+parseInt(secondsInput.value);    
-    if (seconds===0 || textInput2.value=="") {
+    // seconds = parseInt(minutesInput.value)*60+parseInt(secondsInput.value);    
+    if (textInput2.value=="") {
         readingTime.innerHTML = "Please, customize";
     } else {
-        cpm = Math.round((textInput2.value.trim().length/seconds)*60)
-        cpmPara2.innerHTML = `cpm : ${cpm}`;
+        cpm = Math.round((textInput2.value.trim().replace(/\s+/g, " ").length/seconds)*60)
+        cpmPara2.innerHTML = `CPM : ${cpm}`;
         readingTimeValue= (textInput.value.trim().replace(/\s+/g, " ").length/cpm)*60;
         readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
     }
@@ -120,49 +117,49 @@ slider.oninput = function() {
 // customize 박스 3개중에 하나를 클릭했는데 customize가 체크 안되어있으면? 
 // customize가 자동으로 클릭되도록 만들자. 
 
-minutesInput.addEventListener(('input'), (e)=>{
-    if (radioBtn[1].checked){
-        if (secondsInput.value=="") {
-            secondsInput.value=0;
-        } 
-        if (minutesInput.value=="") {
-            minutesInput.value=0;
-        }
-        seconds = parseInt(minutesInput.value)*60+parseInt(secondsInput.value);    
-        cpm = Math.round((textInput2.value.trim().length/seconds)*60)
+// minutesInput.addEventListener(('input'), (e)=>{
+//     if (radioBtn[1].checked){
+//         if (secondsInput.value=="") {
+//             secondsInput.value=0;
+//         } 
+//         if (minutesInput.value=="") {
+//             minutesInput.value=0;
+//         }
+//         seconds = parseInt(minutesInput.value)*60+parseInt(secondsInput.value);    
+//         cpm = Math.round((textInput2.value.trim().length/seconds)*60)
         
-        if (seconds===0 || textInput2.value=="") {
-            readingTime.innerHTML = "Please, customize"
-        } else {
-            cpmPara2.innerHTML = `cpm : ${cpm}`;
-            readingTimeValue= (textInput.value.trim().replace(/\s+/g, " ").length/cpm)*60;
-            readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
-        }
-    }
+//         if (seconds===0 || textInput2.value=="") {
+//             readingTime.innerHTML = "Please, customize"
+//         } else {
+//             cpmPara2.innerHTML = `cpm : ${cpm}`;
+//             readingTimeValue= (textInput.value.trim().replace(/\s+/g, " ").length/cpm)*60;
+//             readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
+//         }
+//     }
     
-})
+// })
 
-secondsInput.addEventListener(('input'), (e)=>{
-    if (radioBtn[1].checked){
-        if (secondsInput.value=="") {
-            secondsInput.value=0;
-        }
-        if (minutesInput.value=="") {
-            minutesInput.value=0;
-        }
-        seconds = parseInt(minutesInput.value)*60+parseInt(secondsInput.value);    
-        cpm = Math.round((textInput2.value.trim().length/seconds)*60)
+// secondsInput.addEventListener(('input'), (e)=>{
+//     if (radioBtn[1].checked){
+//         if (secondsInput.value=="") {
+//             secondsInput.value=0;
+//         }
+//         if (minutesInput.value=="") {
+//             minutesInput.value=0;
+//         }
+//         seconds = parseInt(minutesInput.value)*60+parseInt(secondsInput.value);    
+//         cpm = Math.round((textInput2.value.trim().length/seconds)*60)
         
-        if (seconds===0 || textInput2.value=="") {
-            readingTime.innerHTML = "Please, customize"
-        } else {
-            cpmPara2.innerHTML = `cpm : ${cpm}`;
-            readingTimeValue= (textInput.value.trim().replace(/\s+/g, " ").length/cpm)*60;
-            readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
-        }
-    }
+//         if (seconds===0 || textInput2.value=="") {
+//             readingTime.innerHTML = "Please, customize"
+//         } else {
+//             cpmPara2.innerHTML = `cpm : ${cpm}`;
+//             readingTimeValue= (textInput.value.trim().replace(/\s+/g, " ").length/cpm)*60;
+//             readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
+//         }
+//     }
     
-})
+// })
 
 
 // 음수 안되게
@@ -170,23 +167,21 @@ textInput2.addEventListener(('input'), (e)=>{
     if (radioBtn[1].checked){
 
         let inputText2 = e.target.value;
-        if (secondsInput.value=="") {
-            secondsInput.value=0;
-        }
-        if (minutesInput.value=="") {
-            minutesInput.value=0;
-        }
-        seconds = parseInt(minutesInput.value)*60+parseInt(secondsInput.value);    
+        // if (secondsInput.value=="") {
+        //     secondsInput.value=0;
+        // }
+        // if (minutesInput.value=="") {
+        //     minutesInput.value=0;
+        // }
+        // seconds = parseInt(minutesInput.value)*60+parseInt(secondsInput.value);    
         cpm = Math.round((inputText2.trim().replace(/\s+/g, " ").length/seconds)*60)
         // console.log(inputText2.trim().length);
         
         
-        if (seconds===0 || textInput2.value=="") {
+        if (textInput2.value=="") {
             readingTime.innerHTML = "Please, customize"
-
-            
         } else {
-            cpmPara2.innerHTML = `cpm : ${cpm}`;
+            cpmPara2.innerHTML = `CPM : ${cpm}`;
             readingTimeValue= (textInput.value.trim().replace(/\s+/g, " ").length/cpm)*60;
             readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
         }

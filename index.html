@@ -28,8 +28,20 @@
 </head>
 
 <body>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VPQ3BBXLWS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VPQ3BBXLWS');
+</script>
+
+
     <div class="title">
-        <div>발표시간 계산기</div>
+        <i><img src="imgs/readingTime_logo4.png" alt=""> </i>
+        <span>발표시간 계산기</span>
 
     </div>
     
@@ -68,9 +80,11 @@
             <div class="sliderContainer">
                 <div class="radioBox">
                     <input type="radio" name="checking" id="sliderRadio" checked value="slider"> 
-                    <label for="sliderRadio">Normal</label>
+                    <label for="sliderRadio">일반 모드</label>
                 </div>
-                <p class="paragraph">좌우 스크롤하여, 자신의 속도에 맞는 리딩타임을 출력합니다.</p>
+                <p class="paragraph">1. 좌우 스크롤하면, 해당 속도에 맞춰 리딩타임을 계산합니다.<br/>
+                2. 자신의 말하기 속도와 문장/PPT 사이의 쉼을 고려합니다.
+                </p>
                 
                 <!-- <br/>(스크롤하여 속도를 조절해주세요.) -->
                 <div class="box1"> 
@@ -80,54 +94,60 @@
                     <p class="cpm">430 CPM (Character/Minute)</p>
                 </div>
                 <p class="cpmText">
-                    360 CPM : 오디오북 속도<br/>
-                    390 CPM : 문장간 쉼이 길고, 천천히 설명하는 속도<br/>
-                    410 CPM : 천천히 설명하는 속도<br/>
-                    430~450 CPM : 보통 속도<br/>
-                    470 CPM : 문장간 쉼이 적으며, 빠른 속도
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~390 : 느린 말하기 and 쉼이 긴 말하기<br/>
+                    390~429 : 느린 말하기 or 쉼이 긴 말하기<br/>
+                    430~449 : 평균<br/>
+                    450~479 : 빠른 말하기 or 쉼이 짧은 말하기<br/>
+                    480~&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    : 빠른 말하기 and 쉼이 짧은 말하기<br/>
                 </p>
+                <p>* 매우 천천히 설명하는 발표는 330 CPM까지도 내려갑니다.</p>
             </div>
 
             <div class="customizeContainer">
                 <div class="radioBox">
                     <input type="radio" name="checking" id="customizeRadio" value="customize"> 
-                    <label for="customizeRadio">CPM 자가측정</label>
+                    <label for="customizeRadio">CPM 자가측정 모드</label>
                 </div>
-                <p class="paragraph"><strong>20초</strong> 동안 얼마의 텍스트를 읽었는지 입력하여, 전체 텍스트의 리딩타임을 출력합니다.
-                    <br/>(영어가 포함되면 부정확할 수 있으니, 되도록 한국어로 바꾸어주세요.)
+                <p class="paragraph">
+                    1. 스톱워치를 이용하여 <strong>20초 동안</strong> 자신의 속도대로 읽습니다.<br/>
+                    2. 읽은 만큼 아래에 입력하면, 전체 텍스트의 리딩타임을 계산합니다.<br/>
+                    3. 영어가 포함되면 부정확할 수 있으니, 되도록 한국어로 바꾸어주세요.<br/>
                 </p>
                 
                 <!-- <br/>(일정 시간 동안 읽은 텍스트를 정확하게 넣어주세요.) -->
                 <div class="box2">
-                    <div class="time">
+
+                    <div class="stopWatch">
+                        <p>Stop Watch</p>
+                        <span id="postTestMin">00</span><!-- 분 -->
+                        <span>:</span>
+                        <span id="postTestSec">00</span><!--초-->
+                        <span>.</span>
+                        <span id="postTestMilisec">00</span><!--밀리초-->
+                        <!-- 밀리초는 작고, 회색깔로 만들자. -->
+                        <div>
+                            <button type="button" id="testStartBtn">START</button><!--시작/재시작/기록 버튼-->
+                            <button type="button" id="testStopBtn">STOP</button><!--스톱 버튼-->
+                        </div>
+                    </div>
+
+                    <!-- <div class="time">
                         <input type="number" class="minutes" value="0" min="0">
                         분
                         <input type="number" class="seconds" value="0" min="0" max="60">
                         초 동안 "정확히"
-                    </div>
+                    </div> -->
                     <div>
-                        <textarea placeholder="Measure it, at least 20 seconds" class="textInput2"></textarea>
+                        <textarea placeholder='20초간 읽은 텍스트를 "정확히" 넣어주세요.' class="textInput2"></textarea>
                         
                     </div>
-                    <p>만큼 말했습니다.</p>
-                    <div class="box3">
-                        <div class="stopWatch">
-                            <p>Stop Watch</p>
-                            <span id="postTestMin">00</span><!-- 분 -->
-                            <span>:</span>
-                            <span id="postTestSec">00</span><!--초-->
-                            <span>.</span>
-                            <span id="postTestMilisec">00</span><!--밀리초-->
-                            <!-- 밀리초는 작고, 회색깔로 만들자. -->
-                            <div>
-                                <button type="button" id="testStartBtn">START</button><!--시작/재시작/기록 버튼-->
-                                <button type="button" id="testStopBtn">STOP</button><!--스톱 버튼-->
-                            </div>
-                        </div>
-                        <div>
-                            <p class="cpm2">cpm : </p>
-                            <p class="speed"></p>
-                        </div>
+                    <!-- <p>만큼 말했습니다.</p> -->
+                    <!-- <div class="box3">
+                        
+                    </div> -->
+                    <div>
+                        <p class="cpm2">CPM : </p>
+                        <p class="speed"></p>
                     </div>
                     
                 </div>

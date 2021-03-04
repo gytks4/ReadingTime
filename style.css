@@ -82,16 +82,33 @@ input {
 .title {
   padding: 30px 0;
   /* border: 1px solid black; */
-}
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 
-.title div:nth-child(1) {
   color: var(--color-green);
-  font-size: 70px;
+  font-size: 60px;
   font-weight: 800;
   text-shadow: 0.35rem 0.35rem #ff3852;
-  /* , 0.7rem 0.7rem #ffc14f; */
 }
-.title div:nth-child(2) {
+.title i {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-right: 30px;
+
+  position: relative;
+  top: 5px;
+}
+
+.title img {
+  width: 70px;
+  height: 70px;
+}
+
+/* .title div:nth-child(2) {
   color: black;
   font-size: 20px;
   font-weight: 600;
@@ -100,7 +117,7 @@ input {
   color: var(--color-dark-grey);
   font-size: 25px;
   font-weight: 600;
-}
+} */
 
 /* main section */
 #main {
@@ -177,10 +194,14 @@ input {
 .paragraph {
   width: 90%;
   margin: auto;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   font-size: 14px;
   color: var(--color-dark-grey);
+  line-height: 30px;
 }
+/* .paragraph:nth-child(2) {
+  margin-bottom: 0px;
+} */
 
 .readingTimeContainer {
   padding-bottom: 30px;
@@ -191,6 +212,7 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 8px;
 }
 
 [name="checking"] {
@@ -199,7 +221,7 @@ input {
 }
 
 label {
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 600;
   color: black;
 }
@@ -247,6 +269,7 @@ label {
   /* padding-left: 55px; */
   width: 80%;
   margin: auto;
+  margin-bottom: 15px;
   line-height: 30px;
 }
 
@@ -300,7 +323,7 @@ label {
 }
 
 .box2 {
-  margin-top: 15px;
+  /* margin-top: 0px; */
   /* font-size: 20px; */
 }
 
@@ -312,10 +335,14 @@ label {
   justify-content: space-between;
 }
 /* stopWatch */
-.box3 > div:nth-child(1) {
+/* .box3 > div:nth-child(1) {
   width: 100%;
   border-right: 1px solid var(--color-dark-grey);
   flex-basis: 50%;
+} */
+
+.stopWatch {
+  margin-bottom: 25px;
 }
 
 .stopWatch > p {
@@ -323,13 +350,13 @@ label {
   font-weight: 600;
 }
 
-.box3 > div:nth-child(2) {
+/* .box3 > div:nth-child(2) {
   flex-basis: 50%;
 }
 
 .box3 button {
   color: var(--color-dark-grey);
-}
+} */
 
 #testStartBtn {
   border: 1px solid green;
@@ -367,9 +394,10 @@ label {
   border-bottom: 1px solid var(--color-dark-grey);
 }
 
-.cpm2,
-.speed {
+/* .speed, */
+.cpm2 {
   font-size: 20px;
+  margin-bottom: 20px;
 }
 
 /* ID , about me */
