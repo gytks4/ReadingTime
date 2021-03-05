@@ -20,11 +20,12 @@
   /* #b9ff63; */
 
   /* Font size */
-  --font-large: 48px;
-  --font-medium: 28px;
-  --font-regular: 18px;
-  --font-small: 16px;
-  --font-micro: 14px;
+  --font-large: 30px;
+  --font-medium: 18px;
+  --font-regular: 16px;
+  --font-small: 14px;
+  --font-micro: 12px;
+  --font-tiny: 10px;
 
   /* Font weight */
   --weight-bold: 700;
@@ -74,7 +75,7 @@ textarea,
 input {
   border-radius: 4px;
   border-color: var(--color-light-grey);
-  font-size: 18px;
+  font-size: var(--font-tiny);
 }
 
 /* title */
@@ -88,9 +89,9 @@ input {
   justify-content: center;
 
   color: var(--color-green);
-  font-size: 60px;
+  font-size: var(--font-large);
   font-weight: 800;
-  text-shadow: 0.35rem 0.35rem #ff3852;
+  /* text-shadow: 0.35rem 0.35rem #ff3852; */
 }
 .title i {
   display: flex;
@@ -125,7 +126,7 @@ input {
   padding: 0px 50px;
   width: 100%;
   margin: auto;
-  max-width: 1200px;
+  max-width: 800px;
 }
 
 /* textarea */
@@ -133,21 +134,21 @@ input {
 .textInput {
   resize: none;
   width: 100%;
-  height: 400px;
+  height: 200px;
   border-radius: 8px;
   border-color: var(--color-light-grey);
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 /* counter */
 .counter {
   width: 100%;
-  height: 80px;
+  height: 60px;
   /* border: 1px solid black; */
 
   /* border가 한줄로 나오도록 한다. */
   border-collapse: collapse;
-  font-size: 20px;
+  font-size: var(--font-small);
   color: var(--color-dark-grey);
 }
 
@@ -186,8 +187,8 @@ input {
 } */
 
 .subtitle {
-  font-size: 30px;
-  padding: 30px 0;
+  font-size: var(--font-medium);
+  padding: 20px 0;
   font-weight: 700;
 }
 
@@ -195,16 +196,16 @@ input {
   width: 90%;
   margin: auto;
   margin-bottom: 20px;
-  font-size: 14px;
+  font-size: var(--font-tiny);
   color: var(--color-dark-grey);
-  line-height: 30px;
+  line-height: 18px;
 }
 /* .paragraph:nth-child(2) {
   margin-bottom: 0px;
 } */
 
 .readingTimeContainer {
-  padding-bottom: 30px;
+  /* padding-bottom: 30px; */
   display: flex;
 }
 
@@ -216,12 +217,12 @@ input {
 }
 
 [name="checking"] {
-  transform: scale(2);
+  transform: scale(1.4);
   margin-right: 12px;
 }
 
 label {
-  font-size: 20px;
+  font-size: var(--font-regular);
   font-weight: 600;
   color: black;
 }
@@ -248,11 +249,12 @@ label {
 }
 
 .sliderContainer .cpm {
-  font-size: 15px;
+  font-size: var(--font-micro);
 }
 
-.sliderContainer p:nth-last-child(1) {
-  margin-bottom: 20px;
+.sliderContainer > p:nth-last-child(1) {
+  margin-bottom: 10px;
+  font-size: var(--font-micro);
 }
 
 .box1 {
@@ -260,11 +262,12 @@ label {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 .box1 p:nth-child(1) {
   word-spacing: 100px;
+  font-size: var(--font-tiny);
 }
 
 .cpmText {
@@ -274,7 +277,8 @@ label {
   width: 80%;
   margin: auto;
   margin-bottom: 15px;
-  line-height: 30px;
+  line-height: 20px;
+  font-size: var(--font-micro);
 }
 
 /* The slider itself */
@@ -346,12 +350,17 @@ label {
 } */
 
 .stopWatch {
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 }
 
 .stopWatch > p {
   color: black;
   font-weight: 600;
+  font-size: var(--font-micro);
+}
+
+.stopWatch > span {
+  font-size: var(--font-micro);
 }
 
 /* .box3 > div:nth-child(2) {
@@ -387,6 +396,7 @@ label {
   width: 90%;
   height: 70px;
   margin-bottom: 0;
+  font-size: var(--font-tiny);
 }
 
 .box2 > p {
@@ -400,8 +410,8 @@ label {
 
 /* .speed, */
 .cpm2 {
-  font-size: 20px;
-  margin-bottom: 20px;
+  font-size: var(--font-regular);
+  margin-bottom: 10px;
 }
 
 /* ID , about me */
@@ -413,11 +423,12 @@ label {
 .description {
   /* padding-top: 20px; */
   color: var(--color-dark-grey);
+  font-size: var(--font-micro);
 }
 
 .email {
   margin-top: 10px;
-  font-size: 20px;
+  font-size: var(--font-micro);
   font-weight: 600;
 }
 
@@ -428,15 +439,68 @@ label {
 }
 
 .icons img {
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   border-radius: 6px;
-  margin: 10px;
+  margin: 8px;
 }
 
 .copyright {
-  padding-bottom: 30px;
+  padding-bottom: 20px;
+  font-size: var(--font-tiny);
 }
 
 /* media query  */
 /* 글자를 작게 만들어, 한줄에 나오도록 */
+
+@media screen and (max-width: 768px) {
+  :root {
+    /* Font size */
+    --font-large: 14px;
+    --font-medium: 14px;
+    --font-regular: 12px;
+    --font-small: 10px;
+    --font-micro: 8px;
+  }
+
+  .title img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .title i {
+    top: 2px;
+  }
+
+  #main {
+    padding: 0 10px;
+  }
+
+  .textInput {
+    margin-bottom: 10px;
+  }
+
+  .subtitle {
+    margin: 10px 0px;
+    padding: 0px;
+  }
+  .readingTimeContainer {
+    flex-direction: column;
+  }
+
+  .box1 {
+    margin: 6px 0;
+  }
+
+  .paragraph {
+    margin-bottom: 6px;
+  }
+
+  #contact {
+    padding-top: 6px;
+  }
+
+  .email {
+    margin-top: 0px;
+  }
+}
