@@ -20,7 +20,7 @@
   /* #b9ff63; */
 
   /* Font size */
-  --font-large: 30px;
+  --font-large: 20px;
   --font-medium: 18px;
   --font-regular: 16px;
   --font-small: 14px;
@@ -101,12 +101,12 @@ input {
   margin-right: 30px;
 
   position: relative;
-  top: 5px;
+  top: 2px;
 }
 
 .title img {
-  width: 70px;
-  height: 70px;
+  width: 45px;
+  height: 45px;
 }
 
 /* .title div:nth-child(2) {
@@ -205,7 +205,7 @@ input {
 } */
 
 .readingTimeContainer {
-  /* padding-bottom: 30px; */
+  padding-bottom: 10px;
   display: flex;
 }
 
@@ -463,6 +463,10 @@ label {
     --font-micro: 8px;
   }
 
+  .title {
+    padding: 20px 0px;
+  }
+
   .title img {
     width: 30px;
     height: 30px;
@@ -485,11 +489,16 @@ label {
     padding: 0px;
   }
   .readingTimeContainer {
+    padding-bottom: 0px;
     flex-direction: column;
   }
 
   .box1 {
     margin: 6px 0;
+  }
+
+  .cpmText {
+    width: 40%;
   }
 
   .paragraph {
