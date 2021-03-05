@@ -93,6 +93,11 @@ input {
   font-weight: 800;
   /* text-shadow: 0.35rem 0.35rem #ff3852; */
 }
+
+.notIE {
+  font-size: var(--font-tiny);
+}
+
 .title i {
   display: flex;
   flex-direction: row;
