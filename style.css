@@ -373,6 +373,11 @@ label {
   font-size: var(--font-micro);
 }
 
+#postTestMilisec {
+  font-size: 7px;
+  /* color: var(--color-light-grey); */
+}
+
 /* .box3 > div:nth-child(2) {
   flex-basis: 50%;
 }
