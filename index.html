@@ -11,13 +11,13 @@
     <meta name="keywords" content="발표시간 계산기, 글자수세기, 단어수세기, PT시간 측정">
     <meta name="description" content='여러분의 발표/PT가 몇 분 걸리는지 궁금하다면? 텍스트를 넣으면 "PT/발표시간", 글자수, 단어수를 계산합니다.'>
     <!-- 네이버 SEO -->
-    <meta name="naver-site-verification" content="0ce0c7312843df52707cb7943660d1ea1b5c8a5c" />
+    <meta name="naver-site-verification" content="0ce0c7312843df52707cb7943660d1ea1b5c8a5c">
     <link rel="canonical" href="https://presentationtime.netlify.app">
     <!-- Open Graph -->
     <meta property="og:title" content="발표시간 계산기, 글자수 세기">
     <meta property="og:description" content="PT가 몇 분 걸리는지 궁금하다면?">
     <meta property="og:image" content="imgs/readingTime_logo4.png">
-    <meta property="og:url" content="https://presentationtime.netlify.app" />
+    <meta property="og:url" content="https://presentationtime.netlify.app">
 
     <meta name="author" content="김의진">
     <!-- UTF 8 로 설정 -->
@@ -125,7 +125,8 @@ Internet Explore 환경은 지원하지 않습니다." class="textInput"></texta
                 <p class="paragraph">
                     1. 스톱워치를 이용하여 <strong>20초 동안</strong> 자신의 속도대로 읽습니다.<br/>
                     2. <strong>읽은 만큼</strong> 아래에 입력하면, 전체 텍스트의 PT Time을 계산합니다.<br/>
-                    3. 영어가 포함되면 부정확할 수 있으니, 되도록 <strong>한국어</strong>로 바꾸어주세요.<br/>
+                    3. <strong>PPT</strong>가 있다면, 장수와 전환간의 쉼, 자료 감상 시간을 입력해주세요.<br/>
+                    4. 영어가 포함되면 부정확할 수 있으니, 되도록 <strong>한국어</strong>로 바꾸어주세요.<br/>
                 </p>
                 
                 <!-- <br/>(일정 시간 동안 읽은 텍스트를 정확하게 넣어주세요.) -->
@@ -151,6 +152,17 @@ Internet Explore 환경은 지원하지 않습니다." class="textInput"></texta
                         <input type="number" class="seconds" value="0" min="0" max="60">
                         초 동안 "정확히"
                     </div> -->
+                    <div class="ppt">
+                        <div>
+                            PPT 수 :&nbsp;&nbsp;<input type="number" class="numberOfPPT" value="0" min="0">&nbsp;장
+                        </div> 
+                        <div>
+                            PPT 사이의 쉼 :&nbsp;&nbsp;<input type="number" class="termOfPPT" value="1" min="0">&nbsp;초
+                        </div>
+                        <div>
+                            자료 감상 시간 :&nbsp;&nbsp;<input type="number" class="materialTime" value="0" min="0">&nbsp;초
+                        </div>
+                    </div>
                     <div>
                         <textarea placeholder='20초간 읽은 텍스트를 "정확히" 넣어주세요.' class="textInput2"></textarea>
                         
