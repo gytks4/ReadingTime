@@ -7,22 +7,17 @@ let words = document.querySelector('.words');
 let readingTime = document.querySelector('.readingTime');
 let wordCount = 0;
 
-// let lengthValue = 0;
 
 const slider = document.querySelector(".slider");
 const cpmPara = document.querySelector(".cpm")
 const cpmPara2 = document.querySelector(".cpm2")
 const speedPara = document.querySelector(".speed");
-// const customizedCPM = 
 
 let textInput2 = document.querySelector('.textInput2');
 
 let readingTimeValue =0;
 let cpm = 0;
 const radioBtn = document.getElementsByName('checking');
-// console.log(radioBtn[0].checked);
-// console.log(radioBtn[1].checked);
-
 
 let seconds = 20;
 
@@ -33,23 +28,24 @@ let pptTime=0;
 
 // keyup과 input 
 // keyup은 right-click & paste일 때는 event되지 않는다.
+// input은 모든 변화에 대하여 발생한다.
 
 textInput.addEventListener(('input'), ()=>{
-    // let inputText = e.target.value;
-    textInput.value
+    
     // 예외처리. 글자가 있었다가 지워지면, 빈 array로 남게되어, 글자/단어가 1로 취급됨.
     if (textInput.value == "") {
         words.innerHTML = "0 개";
         lengthWblank.innerHTML ="0 자 / 0 Byte";
         lengthWOblank.innerHTML= "0 자 / 0 Byte";
-    } else {
-        // console.log(`입력한 글자는 ${inputText} 입니다.`);
-        // console.log(`글자수는 ${inputText.length}입니다.`);
-        
+    } else {        
         // 글자수세기(공백포함)
         lengthWblank.innerHTML = `${textInput.value.length} 자 / ${byteCounter(textInput.value,1)} Byte`;
 
         // 글자수세기(공백미포함)
+        // \s 는 줄바꿈, 공백 또는 탭과 같은 글자가 포함되어 있지 않은 문자를 말합니다.
+        // + 는 1개 이상의 것을 의미합니다. 글자가 2개 연속있거나, 줄바꿈이 3개 연속있거나 하는 것들을 모두 가리킵니다.
+        // 이를 / / 사이에 넣으면 정규식이 됩니다. 
+        // g 는 global 을 의미하고, textInput.value에 있는 모든 \s+ 를 말합니다.
         lengthWOblank.innerHTML = `${textInput.value.replace(/\s+/g, "").length} 자 / ${byteCounter(textInput.value.replace(/\s+/g,""),0)} Byte`;
         
         // 단어수세기
@@ -94,7 +90,12 @@ function calPTtime() {
     if (radioBtn[0].checked) {
         cpm = slider.value
         cpmPara.innerHTML = `${slider.value} CPM (Character/Minute)`;
-        cpmPara2.innerHTML = ` (${slider.value} CPM)`;
+        if (textInput.value == "") {
+            cpmPara2.innerHTML = "";
+        } else {
+            cpmPara2.innerHTML = ` (${slider.value} CPM)`;
+        }
+        
         pptTime=0;
         
     } else {        
@@ -244,17 +245,27 @@ function countWords(text) {
   }
 
 function byteCounter(text, blank=0) {
-    // blank = 0 -> 공백 미포함  ,  blank = 1 -> 공백 포함
+    // blank === 0 -> 공백 미포함  ,  blank !== 1 -> 공백 포함
     let byte = 0;
-    if (blank=0) {
+    if (blank==0) {
         text = text.replace(/\s+/g,"");
     } 
         
     for(let i=0; i<text.length;i++) {
-        if (/[ㄱ-ㅎㅏ-ㅣ가-힣]/.test(text[i])) {
-            byte = byte+2
-        } else {
+        // if (/[ㄱ-ㅎㅏ-ㅣ가-힣一-龥ぁ-ゔァ-ヴー々〆〤]/.test(text[i])) {
+        //     byte = byte+2
+        // } else {
+        //     byte++
+        // }
+        // 한자, 일본어, 한글는 2글자 나머지는 1글자로 하는 법
+
+        // 공백, 영어, 숫자, 키보드에 있는 특수문자는 1글자, 나머지는 2글자로 하는법
+        // 키보드에 없는 특수문자는 2바이트가 넘기 때문에 좀 더 정확한 방법
+        // 하지만, emoji, 기타 특수문자, 타언어 등이 포함되면 다른 결과가 나올 수 있다.
+        if (/[\sa-zA-Z0-9`~!@#$%^&*()_+-={}\[\];':",./<>?]/.test(text[i])) {
             byte++
+        } else {
+            byte= byte+2
         }
     }
     return byte

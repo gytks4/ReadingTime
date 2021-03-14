@@ -49,15 +49,14 @@
 </head>
 
 <body>
-
-
-
+    <!-- title -->
     <div class="title">
         <i><img src="imgs/readingTime_logo4.png" alt=""> </i>
         <h1>발표시간 계산기</h1>
     </div>
-    
+    <!-- main -->
     <section id="main">
+        <!-- word/character counter -->
         <table class="counter">
             <tr>
                 <td>글자수(공백 포함)</td>
@@ -70,31 +69,23 @@
                 <td><span class="words">0 개</span></td>
             </tr>
         </table>
+        <!-- textInput -->
         <textarea placeholder="⦁ 스크립트를 입력하면 글자수, 단어수, 리딩타임을 측정합니다. &#13;&#10;
 ⦁ 한국어 기반으로 타언어가 섞여 있어도 무방합니다. &#13;&#10;
 ⦁ Internet Explore 환경은 지원하지 않습니다." class="textInput"></textarea>
+        <!-- PT time  -->
         <table class="counter">
             <tr>
                 <td class="tdReadingTime">PT Time</td>
                 <td class="readingTimeBox"><span class="readingTime">0초</span><span class="cpm2"></span></td>
             </tr>
         </table>
-        
             
-
-        
-        <!-- <div class="counter">
-            <p> 글자수(공백미포함)<br/><span class="lengthWOblank">0자</span> </p> 
-            <p> 글자수(공백포함)<br/><span class="lengthWblank">0자</span> </p> 
-            <p> 단어수<br/><span class="words">0자</span> </p> 
-            
-
-        </div> -->
-        
         <p class="subtitle">PT Time 세부조정</p>
         <!-- <p class="paragraph">보다 정확하게 측정하고 싶다면, Customize를 이용하세요.</p> -->
+        
         <div class="readingTimeContainer">
-            
+            <!-- 간편 모드 -->
             <div class="sliderContainer">
                 <div class="radioBox">
                     <input type="radio" name="checking" id="sliderRadio" checked value="slider"> 
@@ -132,15 +123,10 @@
                         <td><strong>480~</strong></td>
                         <td>빠른 말하기 and 쉼이 짧은 말하기</td>
                     </tr>
-                    <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>~390</strong> : 느린 말하기 and 쉼이 긴 말하기<br/>
-                    <strong>390~419</strong> :  느린 말하기 or 쉼이긴 말하기<br/>
-                    <strong>420~449</strong> : 보통 속도<br/>
-                    <strong>450~479</strong> : 빠른 말하기 or 쉼이 짧은 말하기<br/>
-                    <strong>480~</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    : 빠른 말하기 and 쉼이 짧은 말하기<br/> -->
                 </table>
                 <p>* 매우 천천히 설명하는 발표는 330 CPM까지도 내려갑니다.</p>
             </div>
-
+            <!-- CPM 정밀측정 모드 -->
             <div class="customizeContainer">
                 <div class="radioBox">
                     <input type="radio" name="checking" id="customizeRadio" value="customize"> 
@@ -152,10 +138,7 @@
                     3. <strong>PPT</strong>가 있다면, 장수와 전환간의 쉼, 자료 감상 시간을 입력해주세요.<br/>
                     4. 영어가 포함되면 부정확할 수 있으니, 되도록 <strong>한국어</strong>로 바꾸어주세요.<br/>
                 </p>
-                
-                <!-- <br/>(일정 시간 동안 읽은 텍스트를 정확하게 넣어주세요.) -->
                 <div class="box2">
-
                     <div class="stopWatch">
                         <p>Stop Watch</p>
                         <span id="postTestMin">00</span><!-- 분 -->
@@ -169,13 +152,6 @@
                             <button type="button" id="testStopBtn">STOP</button><!--스톱 버튼-->
                         </div>
                     </div>
-
-                    <!-- <div class="time">
-                        <input type="number" class="minutes" value="0" min="0">
-                        분
-                        <input type="number" class="seconds" value="0" min="0" max="60">
-                        초 동안 "정확히"
-                    </div> -->
                     <div class="ppt">
                         <div>
                             PPT 수 :&nbsp;&nbsp;<input type="number" class="numberOfPPT" value="0" min="0">&nbsp;장
@@ -188,46 +164,18 @@
                         </div>
                     </div>
                     <div>
-                        <textarea placeholder='20초간 읽은 텍스트를 "정확히" 넣어주세요.' class="textInput2"></textarea>
-                        
+                        <textarea placeholder='20초간 읽은 텍스트를 "정확히" 넣어주세요.' class="textInput2"></textarea>      
                     </div>
-                    <!-- <p>만큼 말했습니다.</p> -->
-                    <!-- <div class="box3">
-                        
-                    </div> -->
-                    <div>
-                        
-                        <p class="speed"></p>
-                    </div>
-                    
                 </div>
             </div>
-
-            <!-- 지원이 안되구먼.. -->
-            <!-- <datalist id="tickmarks">
-                <option>200</option>
-                <option value="10"></option>
-                <option value="20"></option>
-                <option value="30"></option>
-                <option label="PT">320</option>
-                <option label="평상시(면접)">400</option>
-                <option value="60"></option>
-                <option value="70"></option>
-                <option value="80"></option>
-                <option value="90"></option>
-                <option>600</option>
-            </datalist> -->
         </div>
-        
     </section>
-    
+    <!-- contact -->
     <section id="contact">
         <p class="subtitle">Contact</p>
         <p class="description">2021.03.14. Modified<br/>
             불편한 점이 있다면 아래 SNS로 연락주시면 감사하겠습니다.</p>
         <div class="icons">
-            <!-- <i class="fab fa-github"></i>
-            <i class="fab fa-instagram"></i> -->
             <a href="https://github.com/gytks4" target="_blank">
                 <img src="imgs/github2.png" alt="">
             </a>
@@ -239,9 +187,7 @@
             </a>
         </div>
         <p class="email">euijinkk97@gmail.com</p>
-        <!-- <p class="copyright">ⓒ Copyright <strong>EuiJin Kim</strong> 2021</p> -->
         <p class="copyright"> © 2021 https://presentationtime.netlify.app. All rights reserved.</p>
-        
     </section>
 </body>
 

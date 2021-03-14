@@ -493,9 +493,9 @@ label {
 @media screen and (max-width: 768px) {
   :root {
     /* Font size */
-    --font-large: 14px;
+    --font-large: 16px;
     --font-medium: 14px;
-    --font-regular: 12px;
+    --font-regular: 14px;
     --font-small: 12px;
     --font-micro: 12px;
   }
