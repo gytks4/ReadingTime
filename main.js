@@ -94,15 +94,17 @@ function calPTtime() {
     if (radioBtn[0].checked) {
         cpm = slider.value
         cpmPara.innerHTML = `${slider.value} CPM (Character/Minute)`;
+        cpmPara2.innerHTML = ` (${slider.value} CPM)`;
         pptTime=0;
         
     } else {        
         if (textInput2.value=="") {
             readingTime.innerHTML = "Please, Customize"
+            cpmPara2.innerHTML = ""
             return;
         }
         cpm = Math.round((textInput2.value.trim().replace(/\s+/g, " ").length/seconds)*60)
-        cpmPara2.innerHTML = `CPM : ${cpm}`;
+        cpmPara2.innerHTML = ` (${cpm} CPM)`;
         
         if (numberOfPPT.value=="" || numberOfPPT.value <0) {
             numberOfPPT.value=0
@@ -120,7 +122,12 @@ function calPTtime() {
         }
     }    
     readingTimeValue= pptTime+(textInput.value.trim().replace(/\s+/g, " ").length/cpm)*60;
-    readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
+    if (readingTimeValue <=60) {
+        readingTime.innerHTML = `${Math.round(readingTimeValue)}초`
+    } else {
+        readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}분 ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}초`
+    }
+    
 }
 
 function showSpeed(speed) {
