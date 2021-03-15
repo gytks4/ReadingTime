@@ -208,41 +208,30 @@ return (num < 10 ? '0'+num : ''+num)
 }
 
 
-
-
-// 출처: https://im-developer.tistory.com/53 [Code Playground]
-// text.replace(/[^_0-9a-zA-Z]/g, " ").trim().split(/\s+/).length
-
-// 1. 띄어쓰기는 1번을 단어 하나로 취급
-// 2. 마지막 글자는 띄어쓰기 되지 않을 것. -> +1 단어.
-// 3. 줄바꿈을 인식시키자
-// 뭐야 정규식 /\s+/를 쓰면 해결되잖아.. - 만능인가 ??
-// console.log(/s+/);
-
-function countWords(text) {
-    
-    let arr = text.trim().split(/\s+/);
+// 단어수세기 함수
+function countWords(text) {    
     wordCount=0;
+    let arr = text.trim().split(/\s+/);
 
     for (let i=0; i<arr.length; i++) {
         if (isWord(arr[i])) {
             wordCount++
         }
     };
-
-    // 문제점 : gytks4@naver.com / 010-1234-5678 / Mr. / 2.4 등을 2개 이상의 단어로 취급
-
-    // 정규식
-    // wordCount=text.replace(/[^_0-9a-zA-Zㄱ-ㅎㅏ-ㅣ가-힣]/g, " ").trim().split(/\s+/).length;
-    // console.log(text.replace(/[^_0-9a-zA-Zㄱ-ㅎㅏ-ㅣ가-힣]/g, " ").trim().split(/\s+/));
-
-    // for (let i = 0; i <= text.length; i++) {
-    //   if (text.charAt(i) === /s+/) {
-    //     wordCount++;
-    //   }
-    // }
     words.innerHTML = `${wordCount} 개`;
-  }
+}
+
+// 띄어쓰기 단위로 구성된 배열이 단어인지 검사하는 함수
+function isWord(str) {
+    let alphaNumericFound = false;
+    for (let i = 0; i < str.length; i++) {
+        if (/[0-9a-zA-Zㄱ-ㅎㅏ-ㅣ가-힣]/.test(str[i])) {
+            alphaNumericFound = true;
+            return alphaNumericFound
+        }
+    }
+    return alphaNumericFound;
+}
 
 function byteCounter(text, blank=0) {
     // blank === 0 -> 공백 미포함  ,  blank !== 1 -> 공백 포함
@@ -270,57 +259,4 @@ function byteCounter(text, blank=0) {
     }
     return byte
 }
-
-// function byteWOblankCounter (text) {
-//     text = text.replace(/\s+/,"");
-
-
-// }
-
-
-// console.log(isWord("b"));
-// const b= "010"
-// console.log(/[0-9a-zA-Zㄱ-ㅎㅏ-ㅣ가-힣]/.test(b));
-
-function isWord(str) {
-    let alphaNumericFound = false;
-    for (let i = 0; i < str.length; i++) {
-        if (/[0-9a-zA-Zㄱ-ㅎㅏ-ㅣ가-힣]/.test(str[i])) {
-            alphaNumericFound = true;
-            return alphaNumericFound
-        }
-    }
-    return alphaNumericFound;
-}
-
-
-// cpmPara.innerHTML = slider.value; // Display the default slider value
-
-
-
-
-// let box1p = document.querySelector('.box1 p:nth-child(1)')
-// console.log(slider.style.width);
-// console.log(box1p.style.wordSpacing);
-// box1p.style.wordSpacing = slider.style.width;
-
-
-//     const korean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
-// korean.test(string);
-
-
-// 공백제거 정규식
-//   $str = preg_replace("/\s+/", "", $str);
-
-//   공백일때 : /\s/
-//   공백 2개 이상일때 : /[ ]{2,}/ 또는 /\s{2,}/
-//   공백이 2개일때 : /\s\s/
-//   모든 공백을 없앨 때 : /\s+/
-
-
-
-// function countWords() {
-//     textInput
-// }
-
 
