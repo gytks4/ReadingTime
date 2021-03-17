@@ -148,6 +148,7 @@ input {
 
 /* counter */
 .counter {
+  
   width: 100%;
   height: 60px;
   /* border: 1px solid black; */
@@ -157,6 +158,7 @@ input {
   font-size: var(--font-small);
   color: var(--color-dark-grey);
   margin-bottom: 4px;
+  
 }
 
 .counter tr:nth-child(1) {
@@ -285,7 +287,7 @@ label {
   color: black;
   text-align: left;
   /* padding-left: 55px; */
-  width: 80%;
+  /* width: 80%; */
   margin: auto;
   margin-bottom: 15px;
   line-height: 20px;
@@ -293,9 +295,8 @@ label {
   /* border-collapse: collapse; */
 }
 
-.cpmText td{
-  /* text-align:center; */
-  /* border: 1px solid var(--color-light-grey); */
+.cpmText tr td:nth-child(1) {
+  border-right: 15px solid transparent;
 }
 
 /* The slider itself */
@@ -533,10 +534,6 @@ label {
 
   .box1 {
     margin: 6px 0;
-  }
-
-  .cpmText {
-    width: 40%;
   }
 
   .paragraph {
