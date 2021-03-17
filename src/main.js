@@ -131,22 +131,6 @@ function calPTtime() {
     
 }
 
-function showSpeed(speed) {
-    if (speed > 480) {
-        speedPara.innerHTML = ""
-    } else if (speed> 460) {
-        speedPara.innerHTML = ""
-    } else if (speed > 410) {
-        speedPara.innerHTML = ""
-    } else if (speed > 390) {
-        speedPara.innerHTML = ""
-    } else {
-        speedPara.innerHTML = ""
-    }   
-    // 
-}
-
-
 // stop watch
 var stTime = 0
 var endTime = 0
