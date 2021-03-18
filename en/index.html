@@ -53,13 +53,21 @@
         <i><img src="../imgs/readingTime_logo4.png" alt=""> </i>
         <h1>Presentation Time Calculator</h1>
     </div>
+    <div class="languageContainer">
+        <span>Language :&nbsp;</span>
+        <select class="language" name="language">
+            <option value="" >Korean</option>
+            <option value="en" selected>English</option>
+        </select>
+    </div>
+    
     <!-- main -->
     <section id="main">
         <!-- word/character counter -->
         <table class="counter">
             <tr>
-                <td>Characters (including spaces)</td>
-                <td>Characters (without spaces)</td>
+                <td>Characters<br/>(including spaces)</td>
+                <td>Characters<br/>(without spaces)</td>
                 <td>Words</td>
             </tr>
             <tr>
@@ -70,8 +78,9 @@
         </table>
         <!-- textInput -->
         <!-- &#13;&#10 줄바꿈 -->
-        <textarea placeholder="⦁ If you enter your presentation script, it returns the number of characters, words and expected presentation time  &#13;&#10;
-⦁ It do Not work on Internet Explore" class="textInput"></textarea>
+        <textarea placeholder=" ⦁ If you enter your presentation script, it will return the number of characters, words and expected presentation time.
+            &#13;&#10; ⦁ It do Not work on Internet Explore." 
+            class="textInput"></textarea>
         <!-- PT time  -->
         <table class="counter">
             <tr>
@@ -91,8 +100,8 @@
                     <label for="sliderRadio">Normal mode</label>
                 </div>
                 <p class="paragraph">
-                    If you scroll right or left, it calculates PT time according to corresponding speed.<br/>
-                    You should consider <strong>your speech speed and the interval of your PPT pages</strong>.
+                    1. If you scroll right or left, it will calculate PT time according to corresponding speed.<br/>
+                    2. You can consider <strong>your speech speed and the interval of your PPT pages</strong>.
                 </p>
                 
                 <!-- <br/>(스크롤하여 속도를 조절해주세요.) -->
@@ -133,9 +142,9 @@
                     <label for="customizeRadio">WPM measurement mode</label>
                 </div>
                 <p class="paragraph">
-                    1. Read your script for 20 seconds using below stopwatch.<br/>
-                    2. If you enter as much as you just read, it calculates PT time about total script.<br/>
-                    3. If you need PPT, enter the number of PPT pages, the interval of PPT pages, the time to view materials.<br/>
+                    1. Read your script for <strong>20 seconds</strong> using below stopwatch.<br/>
+                    2. Enter the script as much as you just read and it will calculate PT time about <strong>total script.</strong><br/>
+                    3. If you have PPT, enter <strong>the number of PPT pages, the interval of PPT pages and the time to view materials.</strong><br/>
                 </p>
                 <div class="box2">
                     <div class="stopWatch">
@@ -172,7 +181,7 @@
     <!-- contact -->
     <section id="contact">
         <p class="subtitle">Contact</p>
-        <p class="description">2021.03.17. Modified<br/>
+        <p class="description">2021.03.18. Modified<br/>
             <!-- 불편한 점이 있다면 아래 SNS로 연락주시면 감사하겠습니다.</p> -->
         <div class="icons">
             <a href="https://github.com/gytks4" target="_blank">

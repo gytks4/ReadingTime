@@ -26,6 +26,11 @@ let termOfPPT = document.querySelector('.termOfPPT');
 let materialTime = document.querySelector('.materialTime');
 let pptTime=0;
 
+const language = document.querySelector('.language');
+language.addEventListener(('change'), () => {
+    document.location.href = `https://presentationtime.netlify.app/${language.value}`
+})
+
 // keyup과 input 
 // keyup은 right-click & paste일 때는 event되지 않는다.
 // input은 모든 변화에 대하여 발생한다.

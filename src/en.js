@@ -30,6 +30,11 @@ let pptTime=0;
 // keyup은 right-click & paste일 때는 event되지 않는다.
 // input은 모든 변화에 대하여 발생한다.
 
+const language = document.querySelector('.language');
+language.addEventListener(('change'), () => {
+    document.location.href = `https://presentationtime.netlify.app/${language.value}`
+})
+
 textInput.addEventListener(('input'), ()=>{
     
     // 예외처리. 글자가 있었다가 지워지면, 빈 array로 남게되어, 글자/단어가 1로 취급됨.
@@ -124,9 +129,9 @@ function calPTtime() {
     }    
     readingTimeValue= pptTime+(countWords(textInput.value)/cpm)*60;
     if (readingTimeValue <=60) {
-        readingTime.innerHTML = `${Math.round(readingTimeValue)}sec`
+        readingTime.innerHTML = `${Math.round(readingTimeValue)} sec`
     } else {
-        readingTime.innerHTML = `${Math.floor(readingTimeValue/60)}min ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)}sec`
+        readingTime.innerHTML = `${Math.floor(readingTimeValue/60)} min ${Math.round(readingTimeValue-(Math.floor(readingTimeValue/60))*60)} sec`
     }
     
 }
